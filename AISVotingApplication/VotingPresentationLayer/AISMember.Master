@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AISMember.master.cs"
+    Inherits="VotingPresentationLayer.AISMember" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>UF AIS | Association for Information Systems, University of Florida</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="images/AIS.png" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="main">
+            <div class="header">
+                <div style="min-width: 50%;">
+                    <a href="http://www.ufais.com/">
+                        <img src="images/AISLogo.png" alt="AIS Logo" class="header-image" />
+                    </a>
+                </div>
+                <div class="right-center">
+                    <div>
+                        <asp:Label ID="UserName" runat="server"></asp:Label>
+                    </div>
+                    <div>
+                        <br />
+                        <a href="Default.aspx" style="text-decoration: none; color: Black;">Sign out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                <center>
+                    <ul id="nav">
+                        <li><a href="VotingHome.aspx">Home</a></li>
+                        <li><a href="Voting.aspx?Position=President">President</a></li>
+                        <li><a href="Voting.aspx?Position=Corporate Relations">Corporate Relations</a></li>
+                        <li><a href="Voting.aspx?Position=Leadership Development">Leadership Development</a></li>
+                        <li><a href="Voting.aspx?Position=Treasury">Treasury</a></li>
+                        <li><a href="Voting.aspx?Position=Internal Networking">Internal Networking</a></li>
+                        <li><a href="Voting.aspx?Position=Media Distribution">Media Distribution</a></li>
+                        <li><a href="Credits.aspx">About</a></li>
+                    </ul>
+                </center>
+            </div>
+            <div class="page-body">
+                <asp:ContentPlaceHolder ID="VoteArea" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="footer">
+                <div style="width: 50%; color: Gray;" class="footer-image">
+                    <p>
+                        Connect With Us!</p>
+                    <a href="https://www.facebook.com/groups/UFAIS" target="_blank">
+                        <img src="images/fb.png" alt="Facebook" />
+                    </a><a href="https://twitter.com/aisuf" target="_blank">
+                        <img src="images/twitter.png" alt="twitter" /></a> <a href="http://www.linkedin.com/groups?gid=3909023&amp;trk=hb_side_g"
+                            target="_blank">
+                            <img src="images/in.png" alt="LinkedIn" />
+                        </a><a href="http://weibo.com/u/3728708845" target="_blank">
+                            <img src="images/weibo.png" alt="Weibo" /></a>
+                </div>
+                <div style="width: 50%; float: right;">
+                    <div class="right-center">
+                        <a href="https://www.ufl.edu" target="_blank">
+                            <img src="images/UFLogo.png" alt="UF Logo" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

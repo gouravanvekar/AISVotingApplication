@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CE1FAC61-1CEF-4F8A-B11E-30432C68BF76}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VotingPresentationLayer</RootNamespace>
+    <AssemblyName>VotingPresentationLayer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ActivatePoll.aspx" />
+    <Content Include="AddCandidate.aspx" />
+    <Content Include="AddMember.aspx" />
+    <Content Include="Credits.aspx" />
+    <Content Include="css\style.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="images\AIS.png" />
+    <Content Include="images\AISLogo.png" />
+    <Content Include="images\Aron.jpg" />
+    <Content Include="images\bg.png" />
+    <Content Include="images\fb.png" />
+    <Content Include="images\Gourav.jpg" />
+    <Content Include="images\in.png" />
+    <Content Include="images\Tarun.jpg" />
+    <Content Include="images\twitter.png" />
+    <Content Include="images\ufais_labs-logo.png" />
+    <Content Include="images\UFLogo.png" />
+    <Content Include="images\unknown.jpg" />
+    <Content Include="images\weibo.png" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Voting.aspx" />
+    <Content Include="VotingHome.aspx" />
+    <Content Include="VotingResults.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivatePoll.aspx.cs">
+      <DependentUpon>ActivatePoll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActivatePoll.aspx.designer.cs">
+      <DependentUpon>ActivatePoll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddCandidate.aspx.cs">
+      <DependentUpon>AddCandidate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddCandidate.aspx.designer.cs">
+      <DependentUpon>AddCandidate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddMember.aspx.cs">
+      <DependentUpon>AddMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddMember.aspx.designer.cs">
+      <DependentUpon>AddMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AISAdmin.Master.cs">
+      <DependentUpon>AISAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AISAdmin.Master.designer.cs">
+      <DependentUpon>AISAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AISMember.Master.cs">
+      <DependentUpon>AISMember.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AISMember.Master.designer.cs">
+      <DependentUpon>AISMember.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Credits.aspx.cs">
+      <DependentUpon>Credits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Credits.aspx.designer.cs">
+      <DependentUpon>Credits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voting.aspx.cs">
+      <DependentUpon>Voting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Voting.aspx.designer.cs">
+      <DependentUpon>Voting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VotingHome.aspx.cs">
+      <DependentUpon>VotingHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VotingHome.aspx.designer.cs">
+      <DependentUpon>VotingHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VotingResults.aspx.cs">
+      <DependentUpon>VotingResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VotingResults.aspx.designer.cs">
+      <DependentUpon>VotingResults.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VotingDataLayer\VotingDataLayer.csproj">
+      <Project>{41B0E51A-6535-42F4-8BA5-B1CBC56DC44D}</Project>
+      <Name>VotingDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VotingEntityLayer\VotingEntityLayer.csproj">
+      <Project>{B4B0AD7C-C357-4072-83E1-265B2DEB46A0}</Project>
+      <Name>VotingEntityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VotingExceptionLayer\VotingExceptionLayer.csproj">
+      <Project>{3B883E0F-7231-4DC1-999D-265477A5AA9E}</Project>
+      <Name>VotingExceptionLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AISAdmin.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AISMember.Master" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4775</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
