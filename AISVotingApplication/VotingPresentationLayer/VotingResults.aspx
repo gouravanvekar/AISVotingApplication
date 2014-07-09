@@ -11,66 +11,29 @@
             <div>
                 <asp:GridView ID="votingStatistics" runat="server" AutoGenerateColumns="False" CellPadding="4"
                     EnableModelValidation="True" ForeColor="#333333" GridLines="None" Style="border: 1px solid black;"
-                    Width="300px">
-                    <AlternatingRowStyle BackColor="White" HorizontalAlign="Center" />
+                    Width="500px">
+                    <AlternatingRowStyle BackColor="White" HorizontalAlign="Left" />
                     <Columns>
-                        <asp:BoundField DataField="Positions" HeaderText="Positions" ReadOnly="True" SortExpression="Positions" />
-                        <asp:BoundField DataField="No. of Voters" HeaderText="No. of Voters" ReadOnly="True"
-                            SortExpression="No. of Voters" />
+                        <asp:BoundField DataField="Position" HeaderText="Position" ReadOnly="True" 
+                            SortExpression="Position" ItemStyle-Width="200px"/>
+                        <asp:BoundField DataField="Winner" HeaderText="Winning Candidate" ReadOnly="True"
+                            SortExpression="Winner" />
+                        <asp:BoundField DataField="Votes" HeaderText="Votes Received" ReadOnly="True"
+                            SortExpression="Votes" ItemStyle-Width="100px" ItemStyle-HorizontalAlign="Center"/>
                     </Columns>
                     <EditRowStyle BackColor="#507CD1" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#000" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" HorizontalAlign="Center" />
+                    <HeaderStyle BackColor="#000" ForeColor="White" Height="50px"/>
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Left" />
+                    <RowStyle BackColor="#EFF3FB" HorizontalAlign="Left" />
                     <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <EmptyDataTemplate>
+                        <h3 style="text-align: center">
+                            <asp:Label ID="votingResultsMessage" runat="server" Text="Voting results are not available yet"></asp:Label></h3>
+                    </EmptyDataTemplate>
                 </asp:GridView>
             </div>
         </div>
-        <div>
-            <h1>
-                Voting Results By Position</h1>
-            <div>
-                <table class="table-style">
-                    <tr>
-                        <td>
-                            Select Position:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="positions" runat="server" class="input-field" AutoPostBack="True"
-                                OnSelectedIndexChanged="positions_SelectedIndexChanged">
-                                <asp:ListItem>President</asp:ListItem>
-                                <asp:ListItem>Corporate Relations</asp:ListItem>
-                                <asp:ListItem>Leadership Development</asp:ListItem>
-                                <asp:ListItem>Treasury</asp:ListItem>
-                                <asp:ListItem>Internal Networking</asp:ListItem>
-                                <asp:ListItem>Media Distribution</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <br />
-                <asp:GridView ID="positionResults" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                    EnableModelValidation="True" ForeColor="#333333" GridLines="None" Style="border: 1px solid black;"
-                    Width="300px">
-                    <AlternatingRowStyle BackColor="White" HorizontalAlign="Center" />
-                    <Columns>
-                        <asp:BoundField DataField="Candidate Name" HeaderText="Candidate Name" ReadOnly="True"
-                            SortExpression="Candidate Name" />
-                        <asp:BoundField DataField="Votes" HeaderText="Votes" ReadOnly="True" SortExpression="Votes" />
-                    </Columns>
-                    <EditRowStyle BackColor="#507CD1" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#000" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" HorizontalAlign="Center" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                </asp:GridView>
-                <br />
-                <br />
-            </div>
-        </div>
+        <br />
     </center>
 </asp:Content>

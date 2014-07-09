@@ -6,7 +6,10 @@
 <head id="Head1" runat="server">
     <title>UF AIS | Association for Information Systems, University of Florida</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu.css" />
     <link rel="icon" type="image/png" href="images/AIS.png" />
+    <script src="Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="Scripts/menu.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -30,26 +33,31 @@
                     </div>
                 </div>
             </div>
-            <div class="menu">
-                <center>
-                    <ul id="nav">
-                        <li><a href="VotingHome.aspx">Home</a></li>
-                        <li><a href="Voting.aspx?Position=President">President</a></li>
-                        <li><a href="Voting.aspx?Position=Corporate Relations">Corporate Relations</a></li>
-                        <li><a href="Voting.aspx?Position=Leadership Development">Leadership Development</a></li>
-                        <li><a href="Voting.aspx?Position=Treasury">Treasury</a></li>
-                        <li><a href="Voting.aspx?Position=Internal Networking">Internal Networking</a></li>
-                        <li><a href="Voting.aspx?Position=Media Distribution">Media Distribution</a></li>
-                        <li><a href="Credits.aspx">About</a></li>
-                    </ul>
-                </center>
+            <div id="menu">
+                <ul class="menu">
+                    <li><a href="VotingHome.aspx"><span>Home</span></a></li>
+                    <li><a href="#" class="parent"><span>Vote</span></a>
+                        <div>
+                            <ul>
+                                <li><a href="Voting.aspx?Position=President"><span>President</span></a></li>
+                                <li><a href="Voting.aspx?Position=Corporate Relations"><span>Corporate Relations</span></a></li>
+                                <li><a href="Voting.aspx?Position=Leadership Development"><span>Leadership Development</span></a></li>
+                                <li><a href="Voting.aspx?Position=Treasury"><span>Treasury</span></a></li>
+                                <li><a href="Voting.aspx?Position=Internal Networking"><span>Internal Networking</span></a></li>
+                                <li><a href="Voting.aspx?Position=Media Distribution"><span>Media Distribution</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="Elected.aspx"><span>Elected by me</span></a></li>
+                    <li class="last"><a href="Credits.aspx"><span>Credits</span></a></li>
+                </ul>
             </div>
             <div class="page-body">
                 <asp:ContentPlaceHolder ID="VoteArea" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
             <div class="footer">
-                <div style="width: 50%; color: Gray;" class="footer-image">
+                <div style="width: 50%; color: #CCC;" class="footer-image">
                     <p>
                         Connect With Us!</p>
                     <a href="https://www.facebook.com/groups/UFAIS" target="_blank">

@@ -5,7 +5,10 @@
 <head id="Head1" runat="server">
     <title>UF AIS | Association for Information Systems, University of Florida</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu.css" />
     <link rel="icon" type="image/png" href="images/AIS.png" />
+    <script src="Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="Scripts/menu.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -14,27 +17,69 @@
     <div>
         <div class="main">
             <div class="header">
-                <a href="http://www.ufais.com/">
-                    <img src="images/AISLogo.png" alt="AIS Logo" class="header-image" />
-                </a>
+                <div style="min-width: 50%;">
+                    <a href="http://www.ufais.com/">
+                        <img src="images/AISLogo.png" alt="AIS Logo" class="header-image" />
+                    </a>
+                </div>
+                <div class="right-center">
+                    <div>
+                        <b>
+                            <asp:Label ID="UserName" runat="server" Text="Welcome Admin!"></asp:Label></b>
+                    </div>
+                    <div>
+                        <br />
+                        <a href="Default.aspx" style="text-decoration: none; color: Black;">Sign out</a>
+                    </div>
+                </div>
             </div>
-            <div class="menu">
-                <center>
-                    <ul id="nav">
-                        <li><a href="AddMember.aspx">Add Member</a></li>
-                        <li><a href="AddCandidate.aspx">Add Candidate</a></li>
-                        <li><a href="ActivatePoll.aspx">Activate Polls</a></li>
-                        <li><a href="VotingResults.aspx">Results</a></li>
-                        <li><a href="Default.aspx">Sign Out</a></li>
-                    </ul>
-                </center>
+            <div id="menu">
+                <ul class="menu">
+                    <li><a href="Dashboard.aspx" class="parent"><span>Dashboard</span></a>
+                        <div>
+                            <ul>
+                                <li><a href="AddMember.aspx" class="parent"><span>Members</span></a>
+                                    <div>
+                                        <ul>
+                                            <li><a href="AddMember.aspx"><span>Add Member</span></a></li>
+                                            <li><a href="FindMembers.aspx"><span>Find Member by UFID</span></a></li>
+                                            <li><a href="FindMemberByName.aspx"><span>Find Member by Name</span></a></li>
+                                            <li><a href="ViewMembers.aspx"><span>View/Delete Members</span></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="AddCandidate.aspx" class="parent"><span>Candidates</span></a>
+                                    <div>
+                                        <ul>
+                                            <li><a href="AddCandidate.aspx"><span>Add Candidate</span></a></li>
+                                            <li><a href="DeleteCandidate.aspx"><span>View/Delete Candidate</span></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="SetAdminPassword.aspx"><span>Set Admin Password</span></a></li>
+                                <li><a href="ResetElection.aspx"><span>Reset Elections</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="ActivatePoll.aspx"><span>Activate Polls</span></a></li>
+                    <li><a href="VotingTrends.aspx" class="parent"><span>Analytics</span></a>
+                        <div>
+                            <ul>
+                                <li><a href="BreakUpAnalysis.aspx"><span>Break-Up Analysis</span></a></li>
+                                <li><a href="VotingStatistics.aspx"><span>Voting Statistics</span></a></li>
+                                <li><a href="VotingTrends.aspx"><span>Voting Trends</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="last"><a href="VotingResults.aspx"><span>Results</span></a></li>
+                </ul>
             </div>
             <div class="page-body">
                 <asp:ContentPlaceHolder ID="AdminArea" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
             <div class="footer">
-                <div style="width: 50%; color: Gray;" class="footer-image">
+                <div style="width: 50%; color: #CCC;" class="footer-image">
                     <p>
                         Connect With Us!</p>
                     <a href="https://www.facebook.com/groups/UFAIS" target="_blank">

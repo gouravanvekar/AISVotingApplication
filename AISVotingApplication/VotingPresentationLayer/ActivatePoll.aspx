@@ -7,7 +7,7 @@
     <center>
         <div>
             <h1>
-                Activate Voting</h1>
+                Activate Polls</h1>
             <div>
                 <asp:GridView ID="gvActivatePolls" runat="server" AutoGenerateColumns="False" CellPadding="4"
                     DataKeyNames="Position_ID" DataSourceID="SqlDataSource1" EnableModelValidation="True"

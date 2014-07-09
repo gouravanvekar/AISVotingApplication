@@ -14,7 +14,27 @@ namespace VotingPresentationLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                VotingData data = new VotingData();
+                term.Items.Clear();
+                term.Items.Add("Fall");
+                term.Items.Add("Spring");
+                
+                string currentTerm = data.GetCurrentTerm();
+                if (currentTerm.Contains("Fall"))
+                {
+                    term.SelectedIndex = 0;
+                }
+                else
+                {
+                    term.SelectedIndex = 1;
+                }
+                year.Items.Clear();
+                year.Items.Add(DateTime.Now.Year.ToString());
+                year.Items.Add((DateTime.Now.Year + 1).ToString());
+                year.Items.Add((DateTime.Now.Year + 2).ToString());
+            }
         }
 
         protected void add_button_Click(object sender, EventArgs e)

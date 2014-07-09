@@ -13,6 +13,24 @@ namespace VotingPresentationLayer {
     public partial class AddMember {
         
         /// <summary>
+        /// AddMembersList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList AddMembersList;
+        
+        /// <summary>
+        /// singleMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl singleMember;
+        
+        /// <summary>
         /// memberUFID control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace VotingPresentationLayer {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Lastname_Required;
         
         /// <summary>
+        /// Password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Password;
+        
+        /// <summary>
         /// Error control.
         /// </summary>
         /// <remarks>
@@ -83,5 +110,50 @@ namespace VotingPresentationLayer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button add_member_button;
+        
+        /// <summary>
+        /// multipleMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl multipleMembers;
+        
+        /// <summary>
+        /// csvUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload csvUpload;
+        
+        /// <summary>
+        /// uploadError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label uploadError;
+        
+        /// <summary>
+        /// aisMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView aisMembers;
+        
+        /// <summary>
+        /// csvButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button csvButton;
     }
 }

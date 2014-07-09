@@ -17,31 +17,8 @@ namespace VotingPresentationLayer
             try
             {
                 VotingData data = new VotingData();
-                votingStatistics.DataSource = data.GetResultStatistics();
+                votingStatistics.DataSource = data.GetFinalVotingResults();
                 votingStatistics.DataBind();
-
-                if (positions.SelectedIndex != -1)
-                {
-                    positionResults.DataSource = data.GetVotingResults(positions.SelectedItem.Text);
-                    positionResults.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                ErrorLogs.LogErrors(ex.Message);
-            }
-        }
-
-        protected void positions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                VotingData data = new VotingData();
-                if (positions.SelectedIndex != -1)
-                {
-                    positionResults.DataSource = data.GetVotingResults(positions.SelectedItem.Text);
-                    positionResults.DataBind();
-                }
             }
             catch (Exception ex)
             {

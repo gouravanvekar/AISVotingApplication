@@ -67,17 +67,9 @@ namespace VotingPresentationLayer
                 }
                 else if (candidates.SelectedIndex != -1)
                 {
-                    string term = string.Empty;
-                    if (DateTime.Now.Month <= 6)
-                    {
-                        term = "Spring " + DateTime.Now.Year.ToString();
-                    }
-                    else
-                    {
-                        term = "Fall " + DateTime.Now.Year.ToString();
-                    }
+                    string term = data.GetCurrentTerm();
                     data.Vote(ufid, candidates.SelectedValue, position, term);
-                    inactiveMessage.Text = "Your Vote has been registered.<br />Thanks for voting!";
+                    inactiveMessage.Text = "Your vote has been registered.<br />Thanks for voting!";
                     activeVoting.Visible = false;
                     inactiveVoting.Visible = true;
                 }

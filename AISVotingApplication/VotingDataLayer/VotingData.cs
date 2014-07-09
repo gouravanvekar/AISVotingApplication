@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using VotingEntityLayer;
 using VotingExceptionLayer;
+using System.Text.RegularExpressions;
 
 namespace VotingDataLayer
 {
@@ -170,10 +171,6 @@ namespace VotingDataLayer
                     member.UFID = ufid;
                     member.FirstName = dr[1].ToString();
                     member.LastName = dr[2].ToString();
-                    member.EMail = dr[3].ToString();
-                    member.Phone = dr[4].ToString();
-                    member.MemberType = dr[5].ToString();
-                    member.PaidMembershipFees = dr[6].ToString().ToLower();
                 }
                 else
                 {
@@ -199,42 +196,25 @@ namespace VotingDataLayer
         }
 
         /// <summary>
-        ///  Method to get member type (Admin, President or Member)
-        /// </summary>
-        /// <param name="ufid">UFID</param>
-        /// <returns>Member Type</returns>
-        public string GetMemberType(string ufid)
-        {
-            string memberType = null;
-            AISMember member = GetMemberDetails(ufid);
-            if (member != null)
-            {
-                memberType = member.MemberType;
-            }
-            return memberType;
-        }
-
-        /// <summary>
         /// Method to add new member
         /// </summary>
         /// <param name="member">New member details</param>
         public void AddMember(AISMember member)
         {
-            SqlTransaction transaction = con.BeginTransaction();
+            SqlTransaction transaction = null;
             try
             {
                 cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.Transaction = transaction;
-                cmd.CommandText = string.Format("INSERT INTO Login_Details VALUES('{0}','{1}')", member.UFID, member.Password);
 
                 con.Open();
+                transaction = con.BeginTransaction();
+                cmd.Transaction = transaction;
+                cmd.CommandText = string.Format("INSERT INTO Login_Details VALUES('{0}','{1}')", member.UFID, member.Password);
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = string.Format("INSERT INTO AIS_Members VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", member.UFID, member.FirstName, member.LastName, member.EMail, member.Phone, member.MemberType, member.PaidMembershipFees);
+                cmd.CommandText = string.Format("INSERT INTO AIS_Members VALUES('{0}','{1}','{2}')", member.UFID, member.FirstName, member.LastName);
                 cmd.ExecuteNonQuery();
-                
-                con.Close(); 
                 transaction.Commit();
             }
             catch (AISException ex)
@@ -245,6 +225,193 @@ namespace VotingDataLayer
             catch (Exception ex)
             {
                 transaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Method to add multiple members
+        /// </summary>
+        /// <param name="members">Details of multiple members</param>
+        /// <returns>Count of records inserted</returns>
+        public int[] AddMultipleMembers(List<AISMember> members)
+        {
+            int[] count = new int[2] { 0, 0 };
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+
+                foreach (AISMember member in members)
+                {
+                    try
+                    {
+                        cmd.CommandText = string.Format("INSERT INTO Login_Details VALUES('{0}','{1}')", member.UFID, member.Password);
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = string.Format("INSERT INTO AIS_Members VALUES('{0}','{1}','{2}')", member.UFID, member.FirstName, member.LastName);
+                        cmd.ExecuteNonQuery();
+                        count[0]++;
+                    }
+                    catch (Exception)
+                    {
+                        cmd.CommandText = string.Format("UPDATE Login_Details SET Password='{0}' WHERE UFID='{1}'", member.Password, member.UFID);
+                        cmd.ExecuteNonQuery();
+
+                        cmd.CommandText = string.Format("UPDATE AIS_Members SET First_Name='{0}', Last_Name='{1}' WHERE UFID='{2}'", member.FirstName, member.LastName, member.UFID);
+                        cmd.ExecuteNonQuery();
+                        count[1]++;
+                    }
+                }
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while adding members", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Method to reset tables in the database for the new term
+        /// </summary>
+        public void ResetElectionForNewTerm()
+        {
+            try
+            {
+                string currentTerm = GetCurrentTerm();
+                string prevTerm = GetPreviousTerm();
+
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+
+                #region Voting Trends Reset
+
+                cmd.CommandText = string.Format("DELETE FROM Voting_Trends WHERE Term != '{0}'", prevTerm);
+                cmd.ExecuteNonQuery();
+
+                string[] positions = new string[6] { "President", "Corporate Relations", "Leadership Development", "Treasury", "Internal Networking", "Media Distribution" };
+
+                foreach (string position in positions)
+                {
+                    cmd.CommandText = string.Format("INSERT INTO Voting_Trends (Term, Position) VALUES ('{0}','{1}')", currentTerm, position);
+                    cmd.ExecuteNonQuery();
+                }
+
+                #endregion
+
+                //Deactivate voting for all positions
+                cmd.CommandText = "UPDATE Voting_Activation SET Activated = 'No'";
+                cmd.ExecuteNonQuery();
+
+                //Delete all records from Vote_Bank table
+                cmd.CommandText = "TRUNCATE TABLE Vote_Bank";
+                cmd.ExecuteNonQuery();
+
+                //Delete all logins, members and candidates
+                cmd.CommandText = "DELETE FROM Login_Details WHERE UFID != 'admin'";
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while deleting records", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Method to get profile image paths of the candidates
+        /// </summary>
+        /// <returns>Profile image paths</returns>
+        public List<string> GetCandidateProfileImages()
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                List<string> profileImages = new List<string>();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT Profile_Image FROM Voting_Candidate";
+
+                con.Open();
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    if (!string.IsNullOrEmpty(dr[0].ToString()))
+                    {
+                        profileImages.Add(dr[0].ToString());
+                    }
+                }
+                con.Close();
+                return profileImages;
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while getting profile images", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Method to get profile image path of a candidate
+        /// </summary>
+        /// <returns>Profile image path</returns>
+        public string GetCandidatesProfileImage(string ufid)
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                string profileImage = string.Empty;
+                cmd.Connection = con;
+                cmd.CommandText = string.Format("SELECT Profile_Image FROM Voting_Candidate WHERE UFID='{0}'", ufid);
+
+                con.Open();
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    if (!string.IsNullOrEmpty(dr[0].ToString()))
+                    {
+                        profileImage = dr[0].ToString();
+                    }
+                }
+                con.Close();
+                return profileImage;
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while getting profile images", ex);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally
@@ -347,13 +514,15 @@ namespace VotingDataLayer
         /// <param name="term">Election term</param>
         public void Vote(string votersUFID, string candidatesUFID, string position, string term)
         {
-
             try
             {
                 cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
                 cmd.CommandText = string.Format("INSERT INTO Vote_Bank VALUES('{0}','{1}','{2}','{3}')", votersUFID, candidatesUFID, position, term);
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = string.Format("UPDATE Voting_Trends SET Final_Vote_Count = Final_Vote_Count + 1 WHERE Term = '{0}' And Position = '{1}'", term, position);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -447,6 +616,78 @@ namespace VotingDataLayer
         }
 
         /// <summary>
+        /// Method to retrive elected candidates by the logged in user
+        /// </summary>
+        /// <param name="position">User's UFID</param>
+        /// <returns>List of elected candidates</returns>
+        public DataTable GetElectedCandidates(string ufid)
+        {
+            DataSet ds;
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = string.Format("SELECT V.Position AS Position, COALESCE(A.First_Name, '') + ' ' + COALESCE(A.Last_Name, '') AS 'Elected Candidate' FROM AIS_Members A, Vote_Bank V WHERE V.Candidates_UFID = A.UFID And V.Voters_UFID='{0}'", ufid);
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while retriving elected candidates", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ds.Tables[0];
+        }
+
+        /// <summary>
+        /// Method to retrive voting result dataset
+        /// </summary>
+        /// <returns>Voting result dataset</returns>
+        public DataTable GetResultDataSet()
+        {
+            DataSet ds;
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = @"SELECT A.UFID VotersUFID, COALESCE(A.First_Name, '') VoterFname, COALESCE(A.Last_Name, '') VoterLname, C.UFID CandidatesUFID,  COALESCE(C.First_Name, '') CandidateFname, COALESCE(C.Last_Name, '') CandidateLname, COALESCE(Position, '') Position, COALESCE(Term, '') Term
+                                    FROM Vote_Bank B
+                                    JOIN AIS_Members A ON A.UFID = B.Voters_UFID
+                                    JOIN AIS_Members C ON C.UFID = B.Candidates_UFID";
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while retriving result dataset", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ds.Tables[0];
+        }
+
+        /// <summary>
         /// Method to retrive voting result statistics
         /// </summary>
         /// <returns>Voting result statistics</returns>
@@ -515,6 +756,267 @@ namespace VotingDataLayer
             return ds.Tables[0];
         }
 
+        /// <summary>
+        /// Method to retrive final voting results
+        /// </summary>
+        /// <returns>Final voting results</returns>
+        public DataTable GetFinalVotingResults()
+        {
+            DataSet ds;
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = @"WITH FinalResult AS
+                                    (
+                                        SELECT V.Position AS Position, COALESCE(A.First_Name, '') + ' ' + COALESCE(A.Last_Name, '') AS Winner, COUNT(V.Candidates_UFID) AS Votes
+                                        FROM AIS_Members A, Vote_Bank V 
+                                        WHERE V.Candidates_UFID = A.UFID
+                                        GROUP BY V.Position, V.Candidates_UFID, A.First_Name, A.Last_Name
+                                    )
+                                    SELECT FinalResult.*
+                                    FROM FinalResult
+                                    JOIN (
+                                            SELECT Position, MAX(Votes) AS VotesReceived
+                                            FROM FinalResult 
+                                            GROUP BY Position
+                                         ) maxvotes
+                                         ON FinalResult.Position = maxvotes.Position 
+                                         AND FinalResult.Votes = maxvotes.VotesReceived";
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                ds = new DataSet();
+                da.Fill(ds);
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while retriving final voting results", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ds.Tables[0];
+        }
+
+        /// <summary>
+        /// Method to retrive voting trends
+        /// </summary>
+        /// <param name="position">Voting term</param>
+        /// <returns>Voting statistics for that term</returns>
+        public string GetVotingTrends(string term)
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                string trendValues = string.Empty;
+                cmd.Connection = con;
+                cmd.CommandText = string.Format("SELECT Final_Vote_Count FROM Voting_Trends WHERE Term='{0}'", term);
+
+                con.Open();
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    trendValues += dr[0].ToString() + ", ";
+                }
+
+                if (trendValues.Length > 0)
+                {
+                    trendValues = trendValues.Substring(0, trendValues.Length - 2);
+                }
+
+                dr.Close();
+                con.Close();
+                return trendValues;
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while retriving candidates", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
+        /// Method to generate Break Up Analysis
+        /// </summary>
+        /// <param name="position">Position</param>
+        /// <returns>Break Up Analysis</returns>
+        public BreakUpAnalysis GetBreakUpAnalysis(string position)
+        {
+            BreakUpAnalysis breakUpAnalysis = new BreakUpAnalysis();
+            try
+            {
+                breakUpAnalysis.ChartTitle = "AIS Voting Results, " + GetCurrentTerm();
+                breakUpAnalysis.ChartSubtitle = "Poll results for " + position + "<br />";
+
+                DataTable pollResults = GetVotingResults(position);
+                DataTable positionVotes = GetResultStatistics();
+
+                breakUpAnalysis.CandidateNames = new List<string> { position, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty };
+                breakUpAnalysis.VotingPercentages = new List<string> { "00.00%", "00.00%", "00.00%", "00.00%", "00.00%", "00.00%" };
+                int i = 1;
+
+                foreach (DataRow row in positionVotes.Rows)
+                {
+                    if (row["Positions"].ToString() == position)
+                    {
+                        breakUpAnalysis.TotalVotes = int.Parse(row["No. of Voters"].ToString());
+                    }
+                }
+
+                if (breakUpAnalysis.TotalVotes != 0)
+                {
+                    foreach (DataRow row in pollResults.Rows)
+                    {
+                        breakUpAnalysis.CandidateNames[i] = row["Candidate Name"].ToString();
+                        breakUpAnalysis.VotingPercentages[i++] = (double.Parse(row["Votes"].ToString()) / (double)breakUpAnalysis.TotalVotes * 100).ToString("00.00") + "%";
+                    }
+                }
+
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while generating break-up analysis", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return breakUpAnalysis;
+        }
+
+        #endregion
+
+        #region General Methods
+
+        /// <summary>
+        /// Method to return current term
+        /// </summary>
+        /// <returns>current term</returns>
+        public string GetCurrentTerm()
+        {
+            string term = string.Empty;
+            if (DateTime.Now.Month <= 6)
+            {
+                term = "Spring " + DateTime.Now.Year.ToString();
+            }
+            else
+            {
+                term = "Fall " + DateTime.Now.Year.ToString();
+            }
+            return term;
+        }
+
+        /// <summary>
+        /// Method to return previous term
+        /// </summary>
+        /// <returns>Previous term</returns>
+        public string GetPreviousTerm()
+        {
+            string prevTerm = string.Empty;
+            if (DateTime.Now.Month <= 6)
+            {
+                prevTerm = "Fall " + (DateTime.Now.Year - 1).ToString();
+            }
+            else
+            {
+                prevTerm = "Spring " + DateTime.Now.Year.ToString();
+            }
+            return prevTerm;
+        }
+
+        /// <summary>
+        /// Method to validate UFID
+        /// </summary>
+        /// <param name="ufid">UFID</param>
+        /// <returns>Validated UFID</returns>
+        public string ValidateUFID(string ufid)
+        {
+            string validatedUFID = string.Empty;
+            try
+            {
+                var regex = new Regex(@"\d{4}-\d{4}|\d{8}|admin");
+                if (regex.Matches(ufid.ToLower())[0].Value == ufid.ToLower())
+                {
+                    validatedUFID = ufid.Replace("-", "");
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return validatedUFID;
+        }
+
+        /// <summary>
+        /// Method to validate Name
+        /// </summary>
+        /// <param name="name">Name</param>
+        /// <returns>Validation status</returns>
+        public bool ValidateName(string name)
+        {
+            bool validated = false;
+            try
+            {
+                var regex = new Regex(@"^\p{L}+(\s+\p{L}+)*$");
+                if (regex.Matches(name)[0].Value == name)
+                {
+                    validated = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return validated;
+        }
+
+        /// <summary>
+        /// Method to validate a record obtained from CSV
+        /// </summary>
+        /// <param name="member">CSV record</param>
+        /// <returns>Record Validity</returns>
+        public bool ValidateMemberRecord(AISMember member)
+        {
+            try
+            {
+                if (member.UFID.ToLower() == "admin")
+                {
+                    return false;
+                }
+
+                var regex = new Regex(@"\d{8}");
+                if (regex.Matches(member.UFID)[0].Value != member.UFID)
+                {
+                    return false;
+                }
+
+                regex = new Regex(@"^\p{L}+(\s+\p{L}+)*$");
+                if ((regex.Matches(member.FirstName)[0].Value != member.FirstName) || (regex.Matches(member.LastName)[0].Value != member.LastName))
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
         #endregion
     }
 }

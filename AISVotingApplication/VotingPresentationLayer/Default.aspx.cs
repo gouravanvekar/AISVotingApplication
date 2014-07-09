@@ -20,35 +20,39 @@ namespace VotingPresentationLayer
         {
             try
             {
-                string ufid = username.Text;
-                string pwd = password.Text;
                 VotingData votingData = new VotingData();
-
-                if (votingData.ValidateUser(ufid, pwd))
+                string ufid = votingData.ValidateUFID(username.Text);
+                if (!string.IsNullOrEmpty(ufid))
                 {
-                    string memberType = votingData.GetMemberType(ufid);
-                    if (memberType == "president" || memberType == "admin")
+                    string pwd = password.Text;
+                    if (votingData.ValidateUser(ufid, pwd))
                     {
-                        Session["user"] = "admin";
-                        Response.Redirect("AddMember.aspx");
+                        if (ufid.ToLower() == "admin")
+                        {
+                            Session["user"] = "admin";
+                            Response.Redirect("Dashboard.aspx");
+                        }
+                        else
+                        {
+                            Session["user"] = ufid;
+                            Response.Redirect("VotingHome.aspx");
+                        }
+                        Error.Text = string.Empty;
                     }
                     else
-                    {
-                        Session["user"] = ufid;
-                        Response.Redirect("VotingHome.aspx");
-                    }
-                    Error.Text = string.Empty;
+                        Error.Text = "Invalid UFID or Password";
                 }
                 else
-                    Error.Text = "Invalid UFID or Password";
+                    Error.Text = "Invalid UFID Format";
+
             }
             catch (AISException ex)
             {
-                Error.Text =  ex.Message;
+                ErrorLogs.LogErrors(ex.Message);
             }
             catch (Exception ex)
             {
-                Error.Text = ex.Message;
+                ErrorLogs.LogErrors(ex.Message);
             }
         }
     }

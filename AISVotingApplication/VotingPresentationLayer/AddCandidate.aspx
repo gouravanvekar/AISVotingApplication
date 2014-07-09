@@ -41,13 +41,8 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="term" runat="server" class="input-field" Style="width: 100px;">
-                            <asp:ListItem Selected="True">Fall</asp:ListItem>
-                            <asp:ListItem>Spring</asp:ListItem>
                         </asp:DropDownList>
                         <asp:DropDownList ID="year" runat="server" class="input-field" Style="width: 100px;">
-                            <asp:ListItem Selected="True">2013</asp:ListItem>
-                            <asp:ListItem>2014</asp:ListItem>
-                            <asp:ListItem>2015</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

@@ -14,11 +14,11 @@
     <RootNamespace>VotingPresentationLayer</RootNamespace>
     <AssemblyName>VotingPresentationLayer</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,28 +56,63 @@
     <Content Include="ActivatePoll.aspx" />
     <Content Include="AddCandidate.aspx" />
     <Content Include="AddMember.aspx" />
+    <Content Include="BreakUpAnalysis.aspx" />
     <Content Include="Credits.aspx" />
+    <Content Include="css\menu.css" />
     <Content Include="css\style.css" />
+    <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DeleteCandidate.aspx" />
+    <Content Include="Elected.aspx" />
+    <Content Include="FindMemberByName.aspx" />
+    <Content Include="FindMembers.aspx" />
+    <Content Include="images\Activate.png" />
+    <Content Include="images\Adam.jpg" />
     <Content Include="images\AIS.png" />
     <Content Include="images\AISLogo.png" />
+    <Content Include="images\Alex.jpg" />
     <Content Include="images\Aron.jpg" />
     <Content Include="images\bg.png" />
+    <Content Include="images\BreakUpAnalysis.png" />
+    <Content Include="images\Candidate.png" />
+    <Content Include="images\David.jpg" />
     <Content Include="images\fb.png" />
+    <Content Include="images\FindMember.png" />
     <Content Include="images\Gourav.jpg" />
+    <Content Include="images\Ian.jpg" />
     <Content Include="images\in.png" />
+    <Content Include="images\Members.png" />
+    <Content Include="images\nav_dropdown_grad.png" />
+    <Content Include="images\nav_dropdown_sep.gif" />
+    <Content Include="images\nav_separator.png" />
+    <Content Include="images\Results.png" />
+    <Content Include="images\SetPassword.png" />
+    <Content Include="images\submenu-bottom.gif" />
+    <Content Include="images\submenu-bottom.png" />
+    <Content Include="images\submenu-selected-bottom.gif" />
+    <Content Include="images\submenu-selected-top.gif" />
     <Content Include="images\Tarun.jpg" />
     <Content Include="images\twitter.png" />
-    <Content Include="images\ufais_labs-logo.png" />
+    <Content Include="images\ufais_labs-logo.gif" />
     <Content Include="images\UFLogo.png" />
     <Content Include="images\unknown.jpg" />
+    <Content Include="images\VotingTrends.png" />
     <Content Include="images\weibo.png" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="ResetElection.aspx" />
+    <Content Include="Scripts\data.js" />
+    <Content Include="Scripts\drilldown.js" />
+    <Content Include="Scripts\exporting.js" />
+    <Content Include="Scripts\gray.js" />
+    <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\menu.js" />
+    <Content Include="SetAdminPassword.aspx" />
+    <Content Include="ViewMembers.aspx" />
     <Content Include="Voting.aspx" />
     <Content Include="VotingHome.aspx" />
     <Content Include="VotingResults.aspx" />
+    <Content Include="VotingStatistics.aspx" />
+    <Content Include="VotingTrends.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -122,12 +157,26 @@
     <Compile Include="AISMember.Master.designer.cs">
       <DependentUpon>AISMember.Master</DependentUpon>
     </Compile>
+    <Compile Include="BreakUpAnalysis.aspx.cs">
+      <DependentUpon>BreakUpAnalysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BreakUpAnalysis.aspx.designer.cs">
+      <DependentUpon>BreakUpAnalysis.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Credits.aspx.cs">
       <DependentUpon>Credits.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Credits.aspx.designer.cs">
       <DependentUpon>Credits.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -136,7 +185,56 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DeleteCandidate.aspx.cs">
+      <DependentUpon>DeleteCandidate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteCandidate.aspx.designer.cs">
+      <DependentUpon>DeleteCandidate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Elected.aspx.cs">
+      <DependentUpon>Elected.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Elected.aspx.designer.cs">
+      <DependentUpon>Elected.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FindMemberByName.aspx.cs">
+      <DependentUpon>FindMemberByName.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FindMemberByName.aspx.designer.cs">
+      <DependentUpon>FindMemberByName.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FindMembers.aspx.cs">
+      <DependentUpon>FindMembers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FindMembers.aspx.designer.cs">
+      <DependentUpon>FindMembers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetElection.aspx.cs">
+      <DependentUpon>ResetElection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetElection.aspx.designer.cs">
+      <DependentUpon>ResetElection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SetAdminPassword.aspx.cs">
+      <DependentUpon>SetAdminPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SetAdminPassword.aspx.designer.cs">
+      <DependentUpon>SetAdminPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMembers.aspx.cs">
+      <DependentUpon>ViewMembers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMembers.aspx.designer.cs">
+      <DependentUpon>ViewMembers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Voting.aspx.cs">
       <DependentUpon>Voting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +255,20 @@
     </Compile>
     <Compile Include="VotingResults.aspx.designer.cs">
       <DependentUpon>VotingResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VotingStatistics.aspx.cs">
+      <DependentUpon>VotingStatistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VotingStatistics.aspx.designer.cs">
+      <DependentUpon>VotingStatistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VotingTrends.aspx.cs">
+      <DependentUpon>VotingTrends.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VotingTrends.aspx.designer.cs">
+      <DependentUpon>VotingTrends.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

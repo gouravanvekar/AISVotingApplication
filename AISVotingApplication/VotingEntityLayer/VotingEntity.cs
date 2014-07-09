@@ -14,10 +14,6 @@ namespace VotingEntityLayer
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string EMail { get; set; }
-        public string Phone { get; set; }
-        public string MemberType { get; set; }
-        public string PaidMembershipFees { get; set; }
     }
 
     /// <summary>
@@ -40,5 +36,17 @@ namespace VotingEntityLayer
         public string VoterUFID { get; set; }
         public string CandidateUFID { get; set; }
         public string Position { get; set; }
+    }
+
+    /// <summary>
+    /// Class to store details of the voting, which will help in the break-up analysis
+    /// </summary>
+    public class BreakUpAnalysis
+    {
+        public string ChartTitle { get; set; }
+        public string ChartSubtitle { get; set; }
+        public List<string> CandidateNames { get; set; }
+        public List<string> VotingPercentages { get; set; }
+        public int TotalVotes { get; set; }
     }
 }
