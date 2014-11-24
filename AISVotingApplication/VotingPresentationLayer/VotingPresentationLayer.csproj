@@ -19,6 +19,10 @@
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,6 +61,7 @@
     <Content Include="AddCandidate.aspx" />
     <Content Include="AddMember.aspx" />
     <Content Include="BreakUpAnalysis.aspx" />
+    <Content Include="ChangePassword.aspx" />
     <Content Include="Credits.aspx" />
     <Content Include="css\menu.css" />
     <Content Include="css\style.css" />
@@ -163,6 +168,13 @@
     </Compile>
     <Compile Include="BreakUpAnalysis.aspx.designer.cs">
       <DependentUpon>BreakUpAnalysis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Credits.aspx.cs">
       <DependentUpon>Credits.aspx</DependentUpon>

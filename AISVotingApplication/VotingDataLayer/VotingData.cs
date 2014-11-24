@@ -109,6 +109,36 @@ namespace VotingDataLayer
         }
 
         /// <summary>
+        /// Method to change password
+        /// </summary>
+        /// <param name="ufid">User's login ID</param>
+        /// <param name="newPassword">New Password</param>
+        public void SetNewPassword(string ufid, string newPassword)
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+                cmd.CommandText = string.Format("UPDATE Login_Details SET Password='{0}' WHERE UFID='{1}'", newPassword, ufid);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while changing the password", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        /// <summary>
         /// Method to get member name by UFID
         /// </summary>
         /// <param name="ufid">UFID</param>
@@ -303,7 +333,7 @@ namespace VotingDataLayer
                 cmd.CommandText = string.Format("DELETE FROM Voting_Trends WHERE Term != '{0}'", prevTerm);
                 cmd.ExecuteNonQuery();
 
-                string[] positions = new string[6] { "President", "Corporate Relations", "Leadership Development", "Treasury", "Internal Networking", "Media Distribution" };
+                string[] positions = new string[6] { "President", "Corporate Relations", "Leadership Development", "Membership & Treasury", "Networking", "Media & Communication" };
 
                 foreach (string position in positions)
                 {
@@ -544,7 +574,8 @@ namespace VotingDataLayer
         /// Method to add new voting candidate
         /// </summary>
         /// <param name="candidate">Candidate details</param>
-        public void AddVotingCandidate(VotingCandidate candidate)
+        /// <returns>Candidate Validity</returns>
+        public bool AddVotingCandidate(VotingCandidate candidate)
         {
             try
             {
@@ -561,12 +592,13 @@ namespace VotingDataLayer
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
             finally
             {
                 con.Close();
             }
+            return true;
         }
 
         /// <summary>
@@ -946,18 +978,22 @@ namespace VotingDataLayer
         /// <returns>Validated UFID</returns>
         public string ValidateUFID(string ufid)
         {
+            ufid = ufid.ToLower();
             string validatedUFID = string.Empty;
             try
             {
-                var regex = new Regex(@"\d{4}-\d{4}|\d{8}|admin");
-                if (regex.Matches(ufid.ToLower())[0].Value == ufid.ToLower())
+                if (ufid.Contains("@ufl.edu") || ufid.Contains("admin"))
                 {
-                    validatedUFID = ufid.Replace("-", "");
+                    var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$|admin");
+                    if (regex.Matches(ufid)[0].Value == ufid)
+                    {
+                        validatedUFID = ufid;
+                    } 
                 }
             }
             catch (Exception)
             {
-
+                return string.Empty;
             }
             return validatedUFID;
         }
@@ -980,7 +1016,7 @@ namespace VotingDataLayer
             }
             catch (Exception)
             {
-
+                return false;
             }
             return validated;
         }

@@ -7,16 +7,16 @@
     <center>
         <div>
             <h1>
-                Find Member by UFID</h1>
+                Find Member by Email</h1>
             <p>
-                <asp:TextBox ID="memberUFID" runat="server" placeholder="UFID" class="input-field"></asp:TextBox>
+                <asp:TextBox ID="memberUFID" runat="server" placeholder="Email" class="input-field"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="UFID_Required" runat="server" ErrorMessage="*" ControlToValidate="memberUFID"></asp:RequiredFieldValidator>
             </p>
             <p>
                 <asp:Button ID="find_button" runat="server" Text="Find" class="button-styles" OnClick="find_button_Click" />
             </p>
             <p>
-                <asp:RegularExpressionValidator ID="UFID_RE_Val" runat="server" ValidationExpression="\d{4}-\d{4}|\d{8}" ErrorMessage="Invalid UFID" ControlToValidate="memberUFID"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="UFID_RE_Val" runat="server" ErrorMessage="Invalid Email" ControlToValidate="memberUFID" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"></asp:RegularExpressionValidator>
             </p>
             <br />
             <div>
@@ -26,7 +26,7 @@
                     Visible="false">
                     <AlternatingRowStyle BackColor="White" HorizontalAlign="Left" />
                     <Columns>
-                        <asp:BoundField DataField="UFID" HeaderText="UFID" ReadOnly="True" SortExpression="UFID" />
+                        <asp:BoundField DataField="UFID" HeaderText="Email" ReadOnly="True" SortExpression="UFID" />
                         <asp:BoundField DataField="First_Name" HeaderText="Firstname" SortExpression="First_Name" />
                         <asp:BoundField DataField="Last_Name" HeaderText="Lastname" SortExpression="Last_Name" />
                         <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />

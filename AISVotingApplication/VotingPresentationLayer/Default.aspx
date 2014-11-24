@@ -17,7 +17,7 @@
                 <a href="http://www.ufais.com/">
                     <img src="images/AISLogo.png" alt="AISLogo" width="300px" height="60px" /></a></p>
             <p>
-                <asp:TextBox ID="username" runat="server" placeholder="UFID" Width="265px" class="login-text"></asp:TextBox>
+                <asp:TextBox ID="username" runat="server" placeholder="Email" Width="265px" class="login-text"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="UFID_Required" runat="server" ErrorMessage="*" ControlToValidate="username"></asp:RequiredFieldValidator>
             </p>
             <p>

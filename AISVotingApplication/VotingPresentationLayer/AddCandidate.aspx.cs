@@ -54,8 +54,14 @@ namespace VotingPresentationLayer
                         candidate.ProfileImage = profileUpload.FileName;
                     }
 
-                    data.AddVotingCandidate(candidate);
-                    Error.Text = "Candidate added successfully";
+                    if (data.AddVotingCandidate(candidate))
+                    {
+                        Error.Text = "Candidate added successfully";
+                    }
+                    else
+                    {
+                        Error.Text = "This candidate is already running for another position. So cannot be added.";
+                    }
                     candidateUFID.Text = string.Empty;
                 }
                 else

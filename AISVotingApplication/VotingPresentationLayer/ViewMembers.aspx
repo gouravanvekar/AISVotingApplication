@@ -15,7 +15,7 @@
                     DataSourceID="MembersDataSource" OnRowDeleting="aisMembers_RowDeleting">
                     <AlternatingRowStyle BackColor="White" HorizontalAlign="Left" />
                     <Columns>
-                        <asp:BoundField DataField="UFID" HeaderText="UFID" ReadOnly="True" SortExpression="UFID" />
+                        <asp:BoundField DataField="UFID" HeaderText="Email" ReadOnly="True" SortExpression="UFID" />
                         <asp:BoundField DataField="First_Name" HeaderText="Firstname" SortExpression="First_Name" />
                         <asp:BoundField DataField="Last_Name" HeaderText="Lastname" SortExpression="Last_Name" />
                         <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />

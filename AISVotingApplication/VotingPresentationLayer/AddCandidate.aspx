@@ -11,10 +11,10 @@
             <table class="table-style">
                 <tr>
                     <td>
-                        UFID:
+                        Email:
                     </td>
                     <td>
-                        <asp:TextBox ID="candidateUFID" runat="server" placeholder="UFID" class="input-field"></asp:TextBox>
+                        <asp:TextBox ID="candidateUFID" runat="server" placeholder="Email" class="input-field"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="UFID_Required" runat="server" ErrorMessage="*" ControlToValidate="candidateUFID"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
@@ -27,9 +27,9 @@
                             <asp:ListItem>President</asp:ListItem>
                             <asp:ListItem>Corporate Relations</asp:ListItem>
                             <asp:ListItem>Leadership Development</asp:ListItem>
-                            <asp:ListItem>Treasury</asp:ListItem>
-                            <asp:ListItem>Internal Networking</asp:ListItem>
-                            <asp:ListItem>Media Distribution</asp:ListItem>
+                            <asp:ListItem>Membership & Treasury</asp:ListItem>
+                            <asp:ListItem>Networking</asp:ListItem>
+                            <asp:ListItem>Media & Communication</asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="positions_Required" runat="server" ErrorMessage="*"
                             ControlToValidate="positions"></asp:RequiredFieldValidator>

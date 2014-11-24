@@ -40,10 +40,10 @@ namespace VotingPresentationLayer
                         Error.Text = string.Empty;
                     }
                     else
-                        Error.Text = "Invalid UFID or Password";
+                        Error.Text = "Invalid Email or Password";
                 }
                 else
-                    Error.Text = "Invalid UFID Format";
+                    Error.Text = "Invalid Email Format";
 
             }
             catch (AISException ex)

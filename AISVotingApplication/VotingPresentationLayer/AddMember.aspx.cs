@@ -163,7 +163,7 @@ namespace VotingPresentationLayer
             if (string.IsNullOrEmpty(ufid))
             {
                 validatedData = false;
-                Error.Text = "Invalid UFID<br />";
+                Error.Text = "Invalid Email<br />";
             }
             if (!votingData.ValidateName(firstname.Text))
             {

@@ -20,10 +20,10 @@
                 <table class="table-style">
                     <tr>
                         <td>
-                            UFID:
+                            Email:
                         </td>
                         <td>
-                            <asp:TextBox ID="memberUFID" runat="server" placeholder="UFID" class="input-field"
+                            <asp:TextBox ID="memberUFID" runat="server" placeholder="Email" class="input-field"
                                 ValidationGroup="SingleMember"></asp:TextBox>
                         </td>
                         <td class="td-small">
@@ -83,8 +83,8 @@
                     <br />
                     The values must be in the following format:<br />
                     <br />
-                    <span style="color: red;">UFID,Password,Firstname,Lastname<br />
-                    </span>Eg.: 12345678,TestPassword,John,Doe<br />
+                    <span style="color: red;">Email,Password,Firstname,Lastname<br />
+                    </span>Eg.: john.doe@ufl.edu,TestPassword,John,Doe<br />
                     <br />
                 </div>
                 <table class="table-style">
@@ -105,7 +105,7 @@
                         AutoGenerateColumns="False">
                         <AlternatingRowStyle BackColor="White" HorizontalAlign="Left" />
                         <Columns>
-                            <asp:BoundField DataField="UFID" HeaderText="UFID" ReadOnly="True" SortExpression="UFID" />
+                            <asp:BoundField DataField="UFID" HeaderText="Email" ReadOnly="True" SortExpression="UFID" />
                             <asp:BoundField DataField="FirstName" HeaderText="Firstname" SortExpression="FirstName" />
                             <asp:BoundField DataField="Lastname" HeaderText="Lastname" SortExpression="Lastname" />
                             <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />

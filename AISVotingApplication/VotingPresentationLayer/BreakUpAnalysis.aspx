@@ -155,9 +155,9 @@
                                         <asp:ListItem>President</asp:ListItem>
                                         <asp:ListItem>Corporate Relations</asp:ListItem>
                                         <asp:ListItem>Leadership Development</asp:ListItem>
-                                        <asp:ListItem>Treasury</asp:ListItem>
-                                        <asp:ListItem>Internal Networking</asp:ListItem>
-                                        <asp:ListItem>Media Distribution</asp:ListItem>
+                                        <asp:ListItem>Membership & Treasury</asp:ListItem>
+                                        <asp:ListItem>Networking</asp:ListItem>
+                                        <asp:ListItem>Media & Communication</asp:ListItem>
                                     </asp:DropDownList>
                                 </td>
                             </tr>

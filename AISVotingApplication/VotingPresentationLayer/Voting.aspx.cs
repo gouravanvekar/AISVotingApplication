@@ -44,9 +44,9 @@ namespace VotingPresentationLayer
             positions.Add("President");
             positions.Add("Corporate Relations");
             positions.Add("Leadership Development");
-            positions.Add("Treasury");
-            positions.Add("Internal Networking");
-            positions.Add("Media Distribution");
+            positions.Add("Membership & Treasury");
+            positions.Add("Networking");
+            positions.Add("Media & Communication");
 
             validated = positions.Contains(position);
             return validated;
