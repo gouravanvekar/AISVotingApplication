@@ -347,6 +347,10 @@ namespace VotingDataLayer
                 cmd.CommandText = "UPDATE Voting_Activation SET Activated = 'No'";
                 cmd.ExecuteNonQuery();
 
+                //Delete all records from Feedback table
+                cmd.CommandText = "TRUNCATE TABLE Feedback";
+                cmd.ExecuteNonQuery();
+
                 //Delete all records from Vote_Bank table
                 cmd.CommandText = "TRUNCATE TABLE Vote_Bank";
                 cmd.ExecuteNonQuery();
@@ -591,6 +595,37 @@ namespace VotingDataLayer
                 throw new AISException("Error while adding voting candidate", ex);
             }
             catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Method to store member feedback
+        /// </summary>
+        /// <param name="feedback">Member's feedback</param>
+        /// <returns>Update status</returns>
+        public bool StoreFeedback(MemberFeedback feedback)
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+                cmd.CommandText = string.Format("INSERT INTO Feedback(Rating, Feedback) VALUES({0},'{1}')", feedback.Rating, feedback.FeedbackDescription);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while adding Feedback", ex);
+            }
+            catch (Exception)
             {
                 return false;
             }
@@ -988,7 +1023,7 @@ namespace VotingDataLayer
                     if (regex.Matches(ufid)[0].Value == ufid)
                     {
                         validatedUFID = ufid;
-                    } 
+                    }
                 }
             }
             catch (Exception)

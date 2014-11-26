@@ -69,6 +69,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DeleteCandidate.aspx" />
     <Content Include="Elected.aspx" />
+    <Content Include="Feedback.aspx" />
     <Content Include="FindMemberByName.aspx" />
     <Content Include="FindMembers.aspx" />
     <Content Include="images\Activate.png" />
@@ -112,6 +113,7 @@
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="SetAdminPassword.aspx" />
+    <Content Include="ViewFeedback.aspx" />
     <Content Include="ViewMembers.aspx" />
     <Content Include="Voting.aspx" />
     <Content Include="VotingHome.aspx" />
@@ -211,6 +213,13 @@
     <Compile Include="Elected.aspx.designer.cs">
       <DependentUpon>Elected.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FindMemberByName.aspx.cs">
       <DependentUpon>FindMemberByName.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,6 +248,13 @@
     </Compile>
     <Compile Include="SetAdminPassword.aspx.designer.cs">
       <DependentUpon>SetAdminPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFeedback.aspx.cs">
+      <DependentUpon>ViewFeedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFeedback.aspx.designer.cs">
+      <DependentUpon>ViewFeedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewMembers.aspx.cs">
       <DependentUpon>ViewMembers.aspx</DependentUpon>

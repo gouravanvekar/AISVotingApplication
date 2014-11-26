@@ -49,4 +49,10 @@ namespace VotingEntityLayer
         public List<string> VotingPercentages { get; set; }
         public int TotalVotes { get; set; }
     }
+
+    public class MemberFeedback
+    {
+        public int Rating { get; set; }
+        public string FeedbackDescription { get; set; }
+    }
 }
