@@ -15,7 +15,34 @@ namespace VotingPresentationLayer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!VerifyAccess())
+                {
+                    Response.Redirect("Dashboard.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogs.LogErrors(ex.Message);
+            }
+        }
 
+        private bool VerifyAccess()
+        {
+            bool validated = false;
+            string access = "";
+            
+            if (Request.QueryString["Access"] != null)
+                if (!String.IsNullOrEmpty(Request.QueryString["Access"]))
+                    access = Request.QueryString["Access"].ToString();
+
+            VotingData data = new VotingData();
+            if(access == data.GetPassword("admin"))
+            {
+                validated = true;
+            }
+            return validated;
         }
 
         public override void VerifyRenderingInServerForm(Control control)

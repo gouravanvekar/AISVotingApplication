@@ -67,7 +67,6 @@
                             <ul>
                                 <li><a href="BreakUpAnalysis.aspx"><span>Break-Up Analysis</span></a></li>
                                 <li><a href="VotingTrends.aspx"><span>Voting Trends</span></a></li>
-                                <li><a href="VotingStatistics.aspx"><span>Voting Statistics</span></a></li>
                                 <li><a href="ViewFeedback.aspx"><span>View Feedback</span></a></li>
                             </ul>
                         </div>
