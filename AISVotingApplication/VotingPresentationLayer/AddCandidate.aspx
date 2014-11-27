@@ -40,9 +40,9 @@
                         Term:
                     </td>
                     <td>
-                        <asp:DropDownList ID="term" runat="server" class="input-field" Style="width: 100px;">
+                        <asp:DropDownList ID="term" runat="server" class="input-field" Style="width: 100px;" Enabled="false">
                         </asp:DropDownList>
-                        <asp:DropDownList ID="year" runat="server" class="input-field" Style="width: 100px;">
+                        <asp:DropDownList ID="year" runat="server" class="input-field" Style="width: 100px;" Enabled="false">
                         </asp:DropDownList>
                     </td>
                 </tr>

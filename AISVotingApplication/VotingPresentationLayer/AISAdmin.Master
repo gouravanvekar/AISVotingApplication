@@ -18,7 +18,7 @@
         <div class="main">
             <div class="header">
                 <div style="min-width: 50%;">
-                    <a href="http://www.ufais.com/">
+                    <a href="Dashboard.aspx">
                         <img src="images/AISLogo.png" alt="AIS Logo" class="header-image" />
                     </a>
                 </div>
@@ -42,7 +42,7 @@
                                     <div>
                                         <ul>
                                             <li><a href="AddMember.aspx"><span>Add Member</span></a></li>
-                                            <li><a href="FindMembers.aspx"><span>Find Member by UFID</span></a></li>
+                                            <li><a href="FindMembers.aspx"><span>Find Member by Email</span></a></li>
                                             <li><a href="FindMemberByName.aspx"><span>Find Member by Name</span></a></li>
                                             <li><a href="ViewMembers.aspx"><span>View/Delete Members</span></a></li>
                                         </ul>
@@ -94,7 +94,7 @@
                 <div style="width: 50%; float: right;">
                     <div style="position: relative; min-width: 50%; float: right; text-align: right;
                         margin-top: 5%; padding: 20px;">
-                        <a href="https://www.ufl.edu" target="_blank">
+                        <a href="http://www.ufl.edu/" target="_blank">
                             <img src="images/UFLogo.png" alt="UF Logo" /></a>
                     </div>
                 </div>

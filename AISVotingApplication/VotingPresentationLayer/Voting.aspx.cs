@@ -37,8 +37,22 @@ namespace VotingPresentationLayer
         {
             bool validated = false;
             if (Request.QueryString["Position"] != null)
+            {
                 if (!String.IsNullOrEmpty(Request.QueryString["Position"]))
+                {
                     position = Request.QueryString["Position"].ToString();
+
+                    if (position.Contains("Membership"))
+                    {
+                        position = "Membership & Treasury";
+                    }
+
+                    if (position.Contains("Media"))
+                    {
+                        position = "Media & Communication";
+                    }
+                }
+            }
 
             List<string> positions = new List<string>();
             positions.Add("President");

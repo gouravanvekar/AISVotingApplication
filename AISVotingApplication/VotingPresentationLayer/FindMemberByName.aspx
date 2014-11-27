@@ -9,7 +9,7 @@
             <h1>
                 Find Member by Name</h1>
             <p>
-                <asp:TextBox ID="memberUFID" runat="server" placeholder="UFID" class="input-field"></asp:TextBox>
+                <asp:TextBox ID="memberUFID" runat="server" placeholder="Name" class="input-field"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="UFID_Required" runat="server" ErrorMessage="*" ControlToValidate="memberUFID"></asp:RequiredFieldValidator>
             </p>
             <p>
@@ -20,12 +20,12 @@
                 <asp:GridView ID="aisMembers" runat="server" CellPadding="4" EnableModelValidation="True"
                     ForeColor="#333333" GridLines="None" Style="border: 1px solid black;" Width="600px"
                     AutoGenerateColumns="False" DataKeyNames="UFID" DataSourceID="MembersDataSource"
-                    Visible="false">
+                    Visible="False">
                     <AlternatingRowStyle BackColor="White" HorizontalAlign="Left" />
                     <Columns>
                         <asp:BoundField DataField="UFID" HeaderText="UFID" ReadOnly="True" SortExpression="UFID" />
-                        <asp:BoundField DataField="First_Name" HeaderText="Firstname" SortExpression="First_Name" />
-                        <asp:BoundField DataField="Last_Name" HeaderText="Lastname" SortExpression="Last_Name" />
+                        <asp:BoundField DataField="First_Name" HeaderText="First_Name" SortExpression="First_Name" />
+                        <asp:BoundField DataField="Last_Name" HeaderText="Last_Name" SortExpression="Last_Name" />
                         <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
                     </Columns>
                     <EditRowStyle BackColor="#507CD1" />
@@ -47,9 +47,10 @@
                 <asp:SqlDataSource ID="MembersDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:VotingData %>"
                     SelectCommand="SELECT  AIS_Members.UFID, AIS_Members.First_Name, AIS_Members.Last_Name, Login_Details.Password 
 FROM AIS_Members, Login_Details
-Where AIS_Members.UFID = Login_Details.UFID And AIS_Members.First_Name LIKE  '%' + @memberUFID + '%'">
+Where AIS_Members.UFID = Login_Details.UFID And (AIS_Members.First_Name LIKE  '%' + @memberUFID + '%'
+Or AIS_Members.Last_Name LIKE  '%' + @memberUFID + '%')">
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="memberUFID" Name="memberUFID" PropertyName="Text" />
+                        <asp:ControlParameter ControlID="memberUFID" Name="memberUFID" PropertyName="Text" DefaultValue="" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </div>

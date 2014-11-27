@@ -19,7 +19,7 @@
             <div class="main">
                 <div class="header">
                     <div style="min-width: 50%;">
-                        <a href="http://www.ufais.com/">
+                        <a href="VotingHome.aspx">
                             <img src="images/AISLogo.png" alt="AIS Logo" class="header-image" />
                         </a>
                     </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div style="width: 50%; float: right;">
                         <div class="right-center">
-                            <a href="https://www.ufl.edu" target="_blank">
+                            <a href="http://www.ufl.edu/" target="_blank">
                                 <img src="images/UFLogo.png" alt="UF Logo" />
                             </a>
                         </div>

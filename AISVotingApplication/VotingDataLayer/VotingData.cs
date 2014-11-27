@@ -1070,16 +1070,13 @@ namespace VotingDataLayer
                     return false;
                 }
 
-                var regex = new Regex(@"\d{8}");
-                if (regex.Matches(member.UFID)[0].Value != member.UFID)
+                if (member.UFID.Contains("@ufl.edu"))
                 {
-                    return false;
-                }
-
-                regex = new Regex(@"^\p{L}+(\s+\p{L}+)*$");
-                if ((regex.Matches(member.FirstName)[0].Value != member.FirstName) || (regex.Matches(member.LastName)[0].Value != member.LastName))
-                {
-                    return false;
+                    var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                    if (regex.Matches(member.UFID)[0].Value != member.UFID)
+                    {
+                        return false;
+                    }
                 }
             }
             catch (Exception)

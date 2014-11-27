@@ -73,19 +73,13 @@
     <Content Include="FindMemberByName.aspx" />
     <Content Include="FindMembers.aspx" />
     <Content Include="images\Activate.png" />
-    <Content Include="images\Adam.jpg" />
     <Content Include="images\AIS.png" />
     <Content Include="images\AISLogo.png" />
-    <Content Include="images\Alex.jpg" />
-    <Content Include="images\Aron.jpg" />
     <Content Include="images\bg.png" />
     <Content Include="images\BreakUpAnalysis.png" />
     <Content Include="images\Candidate.png" />
-    <Content Include="images\David.jpg" />
     <Content Include="images\fb.png" />
     <Content Include="images\FindMember.png" />
-    <Content Include="images\Gourav.jpg" />
-    <Content Include="images\Ian.jpg" />
     <Content Include="images\in.png" />
     <Content Include="images\Members.png" />
     <Content Include="images\nav_dropdown_grad.png" />
@@ -97,7 +91,6 @@
     <Content Include="images\submenu-bottom.png" />
     <Content Include="images\submenu-selected-bottom.gif" />
     <Content Include="images\submenu-selected-top.gif" />
-    <Content Include="images\Tarun.jpg" />
     <Content Include="images\twitter.png" />
     <Content Include="images\ufais_labs-logo.gif" />
     <Content Include="images\UFLogo.png" />
