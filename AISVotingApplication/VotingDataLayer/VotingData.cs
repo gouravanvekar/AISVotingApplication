@@ -1063,6 +1063,7 @@ namespace VotingDataLayer
         /// <returns>Record Validity</returns>
         public bool ValidateMemberRecord(AISMember member)
         {
+            bool valdated = false;
             try
             {
                 if (member.UFID.ToLower() == "admin")
@@ -1070,20 +1071,25 @@ namespace VotingDataLayer
                     return false;
                 }
 
-                if (member.UFID.Contains("@ufl.edu"))
+                if (!String.IsNullOrEmpty(member.UFID) && member.UFID.Contains("@ufl.edu"))
                 {
                     var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
                     if (regex.Matches(member.UFID)[0].Value != member.UFID)
                     {
                         return false;
                     }
+                    valdated = true;
+                }
+                else
+                {
+                    valdated = false;
                 }
             }
             catch (Exception)
             {
                 return false;
             }
-            return true;
+            return valdated;
         }
         #endregion
     }

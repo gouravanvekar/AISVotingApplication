@@ -13,62 +13,25 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="VoteArea" runat="server">
     <center>
-        <h1>
-            Authors</h1>
+        <h1>Project Team</h1>
         <table class="table-style">
             <tr>
-                <td style="padding: 20px;">
+                <td style="padding: 20px; width:320px;">
                     <div style="text-align: center">
                         <b>Aron Aperauch</b>
                     </div>
                     <div style="text-align: center">
-                        Project Manager
+                        Project Manager<br />
+                        (VP Networking: Spring 2013)
                     </div>
                 </td>
-                <td style="padding: 20px;">
+                <td style="padding: 20px; width:320px;">
                     <div style="text-align: center">
                         <b>Gourav Anvekar</b>
                     </div>
                     <div style="text-align: center">
-                        Lead Developer
-                    </div>
-                </td>
-                <td style="padding: 20px;">
-                    <div style="text-align: center">
-                        <b>Tarun Sharma</b>
-                    </div>
-                    <div style="text-align: center">
-                        Database Admin (Fall 2013)
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td style="padding: 20px;">
-                    <div style="text-align: center">
-                        <b>Contributors<br />(Spring 2014)</b>
-                    </div>
-                    <div style="text-align: center">
-                        <br />Santosh Sunkavalli
-                        <br />Swetha Katepalli
-                        <br />Adrian Wu
-                    </div>
-                </td>
-                <td style="padding: 20px;">
-                    <div style="text-align: center">
-                        <b>Contributors<br />(Fall 2014)</b>
-                    </div>
-                    <div style="text-align: center">
-                        <br />Name 1
-                        <br />Name 2
-                        <br />Name 3
-                    </div>
-                </td>
-                <td style="padding: 20px;">
-                    <div style="text-align: center">
-                        <b></b>
-                    </div>
-                    <div style="text-align: center">
-                        
+                        Lead Developer<br />
+                        (VP Media and Communications: Fall 2014)
                     </div>
                 </td>
             </tr>
