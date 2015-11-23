@@ -19,7 +19,7 @@
                     text: $('#<%=ChartSubtitle.ClientID %>').val()
                 },
                 xAxis: {
-                    categories: ['President', 'Corporate Relations', 'Leadership Development', 'Membership & Treasury', 'Networking', 'Media & Communication']
+                    categories: ['President', 'Corporate Relations', 'Leadership Development', 'Membership & Treasury', 'Networking', 'Media & Communication', 'Alumni Relations']
                 },
                 yAxis: {
                     title: {

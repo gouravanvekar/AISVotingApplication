@@ -45,6 +45,7 @@
                                     <li><a href="Voting.aspx?Position=Membership & Treasury"><span>Membership & Treasury</span></a></li>
                                     <li><a href="Voting.aspx?Position=Networking"><span>Networking</span></a></li>
                                     <li><a href="Voting.aspx?Position=Media & Communication"><span>Media & Communication</span></a></li>
+                                    <li><a href="Voting.aspx?Position=Alumni Relations"><span>Alumni Relations</span></a></li>
                                 </ul>
                             </div>
                         </li>
@@ -56,7 +57,6 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="Feedback.aspx"><span>Feedback</span></a></li>
                         <li class="last"><a href="Credits.aspx"><span>Credits</span></a></li>
                     </ul>
                 </div>

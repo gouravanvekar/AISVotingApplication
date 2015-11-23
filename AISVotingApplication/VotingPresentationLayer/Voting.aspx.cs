@@ -51,6 +51,11 @@ namespace VotingPresentationLayer
                     {
                         position = "Media & Communication";
                     }
+
+                    if (position.Contains("Alumni"))
+                    {
+                        position = "Alumni Relations";
+                    }
                 }
             }
 
@@ -61,6 +66,7 @@ namespace VotingPresentationLayer
             positions.Add("Membership & Treasury");
             positions.Add("Networking");
             positions.Add("Media & Communication");
+            positions.Add("Alumni Relations");
 
             validated = positions.Contains(position);
             return validated;
@@ -114,7 +120,7 @@ namespace VotingPresentationLayer
             }
             else
             {
-                inactiveMessage.Text = "Voting has not begun for " + position + ".<br />Please wait.<br />We appreciate your patience.";
+                inactiveMessage.Text = "Voting has not begun for " + position + "<br />Please wait<br />We appreciate your patience";
                 activeVoting.Visible = false;
                 inactiveVoting.Visible = true;
             }

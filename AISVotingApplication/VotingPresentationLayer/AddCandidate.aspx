@@ -30,6 +30,7 @@
                             <asp:ListItem>Membership & Treasury</asp:ListItem>
                             <asp:ListItem>Networking</asp:ListItem>
                             <asp:ListItem>Media & Communication</asp:ListItem>
+                            <asp:ListItem>Alumni Relations</asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="positions_Required" runat="server" ErrorMessage="*"
                             ControlToValidate="positions"></asp:RequiredFieldValidator>

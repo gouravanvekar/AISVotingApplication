@@ -333,7 +333,7 @@ namespace VotingDataLayer
                 cmd.CommandText = string.Format("DELETE FROM Voting_Trends WHERE Term != '{0}'", prevTerm);
                 cmd.ExecuteNonQuery();
 
-                string[] positions = new string[6] { "President", "Corporate Relations", "Leadership Development", "Membership & Treasury", "Networking", "Media & Communication" };
+                string[] positions = new string[7] { "President", "Corporate Relations", "Leadership Development", "Membership & Treasury", "Networking", "Media & Communication", "Alumni Relations" };
 
                 foreach (string position in positions)
                 {

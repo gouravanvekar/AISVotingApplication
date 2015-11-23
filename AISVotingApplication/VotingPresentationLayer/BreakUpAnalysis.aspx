@@ -158,7 +158,11 @@
                                         <asp:ListItem>Membership & Treasury</asp:ListItem>
                                         <asp:ListItem>Networking</asp:ListItem>
                                         <asp:ListItem>Media & Communication</asp:ListItem>
+                                        <asp:ListItem>Alumni Relations</asp:ListItem>
                                     </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="btnRefresh" runat="server" ImageUrl="~/images/refresh.png" CssClass="refresh-btn" AlternateText="Refresh" OnClick="btnRefresh_Click" ToolTip="Refresh Results" />
                                 </td>
                             </tr>
                         </table>
