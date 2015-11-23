@@ -41,6 +41,19 @@ namespace VotingPresentationLayer
             }
         }
 
+        protected void btnRefresh_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                BindGridView();
+                BindGraph();
+            }
+            catch (Exception ex)
+            {
+                ErrorLogs.LogErrors(ex.Message);
+            }
+        }
+
         private void BindGridView()
         {
             VotingData data = new VotingData();

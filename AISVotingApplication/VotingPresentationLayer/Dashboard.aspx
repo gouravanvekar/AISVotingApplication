@@ -7,7 +7,7 @@
     <center>
         <div style="width: 80%; height: 420px;">
             <h1>
-                Dashboard</h1>
+                Control Panel</h1>
             <div class="left-div-style">
                 <a href="AddMember.aspx">
                     <img src="images/Members.png" alt="Members" class="icon-style" />

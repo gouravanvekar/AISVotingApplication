@@ -35,7 +35,7 @@
             </div>
             <div id="menu">
                 <ul class="menu">
-                    <li><a href="Dashboard.aspx" class="parent"><span>Dashboard</span></a>
+                    <li><a href="Dashboard.aspx" class="parent"><span>Control Panel</span></a>
                         <div>
                             <ul>
                                 <li><a href="AddMember.aspx" class="parent"><span>Members</span></a>
