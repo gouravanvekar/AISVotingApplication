@@ -31,7 +31,7 @@ namespace VotingPresentationLayer
                 string profileImage = data.GetCandidatesProfileImage(ufid);
                 if (!string.IsNullOrEmpty(profileImage))
                 {
-                    File.Delete(Server.MapPath("~/images/" + profileImage));
+                    File.Delete(Server.MapPath("~/images/candidates/" + profileImage));
                 }
             }
             catch (Exception ex)
@@ -42,10 +42,10 @@ namespace VotingPresentationLayer
 
         protected string GetImageUrl(string profileImage)
         {
-            //if (File.Exists(Server.MapPath("~/images/" + profileImage))) can also be used
+            //if (File.Exists(Server.MapPath("~/images/candidates/" + profileImage))) can also be used
             if (!string.IsNullOrEmpty(profileImage))
             {
-                return "~/images/" + profileImage;
+                return "~/images/candidates/" + profileImage;
             }
             else
             {

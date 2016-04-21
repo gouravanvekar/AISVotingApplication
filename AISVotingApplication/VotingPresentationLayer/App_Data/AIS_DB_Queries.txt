@@ -1,0 +1,60 @@
+﻿CREATE TABLE [dbo].[Login_Details](
+	[UFID] [varchar](50) NOT NULL,
+	[Password] [varchar](15) NOT NULL
+	PRIMARY KEY(UFID)
+)
+
+INSERT INTO [Login_Details] VALUES ('admin', 'admin')
+
+CREATE TABLE [dbo].[AIS_Members](
+	[UFID] [varchar](50) NOT NULL,
+	[First_Name] [varchar](25) NOT NULL,
+	[Last_Name] [varchar](25) NULL,
+	PRIMARY KEY(UFID),
+	FOREIGN KEY(UFID) REFERENCES Login_Details(UFID) ON DELETE CASCADE
+)
+
+CREATE TABLE [dbo].[Vote_Bank](
+	[Voters_UFID] [varchar](50) NOT NULL,
+	[Candidates_UFID] [varchar](50) NOT NULL,
+	[Position] [varchar](25) NOT NULL,
+	[Term] [varchar](25) NULL
+) 
+
+CREATE TABLE [dbo].[Voting_Activation](
+	[Position_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Position] [varchar](25) NOT NULL,
+	[Activated] [varchar](10) NULL,
+	PRIMARY KEY(Position_ID)
+)
+
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('President', 'No')
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('Corporate Relations', 'No')
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('Leadership Development', 'No')
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('Membership & Treasury', 'No')
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('Networking', 'No')
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('Media & Communication', 'No')
+INSERT INTO [Voting_Activation] ([Position],[Activated]) VALUES ('Alumni Relations', 'No')
+
+
+CREATE TABLE [dbo].[Voting_Candidate](
+	[UFID] [varchar](50) NOT NULL,
+	[Position] [varchar](25) NULL,
+	[Term] [varchar](25) NULL,
+	[Profile_Image] [varchar](100) NULL,
+	PRIMARY KEY(UFID),
+	FOREIGN KEY(UFID) REFERENCES Login_Details(UFID) ON DELETE CASCADE
+) 
+
+CREATE TABLE [dbo].[Voting_Trends](
+	[Term] [varchar](15) NOT NULL,
+	[Position] [varchar](25) NOT NULL,
+	[Final_Vote_Count] [int] DEFAULT (0) NOT NULL
+)
+
+CREATE TABLE [dbo].[Feedback](
+	[Feedback_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Rating] [int] DEFAULT (0) NOT NULL,
+	[Feedback] [varchar](300) NULL,
+	PRIMARY KEY(Feedback_ID)
+)

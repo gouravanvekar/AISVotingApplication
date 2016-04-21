@@ -50,7 +50,7 @@ namespace VotingPresentationLayer
                     candidate.Term = term.SelectedItem.Text + " " + year.SelectedItem.Text;
                     if (profileUpload.HasFile)
                     {
-                        profileUpload.SaveAs(Server.MapPath("~/images/" + profileUpload.FileName));
+                        profileUpload.SaveAs(Server.MapPath("~/images/candidates/" + profileUpload.FileName));
                         candidate.ProfileImage = profileUpload.FileName;
                     }
 

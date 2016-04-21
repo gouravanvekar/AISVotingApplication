@@ -28,7 +28,7 @@ namespace VotingPresentationLayer
                     List<string> profileImages = votingData.GetCandidateProfileImages();
                     foreach (string image in profileImages)
                     {
-                        File.Delete(Server.MapPath("~/images/" + image));
+                        File.Delete(Server.MapPath("~/images/candidates/" + image));
                     }
                     votingData.ResetElectionForNewTerm();
                     message.Text = "Reset Successful"; 

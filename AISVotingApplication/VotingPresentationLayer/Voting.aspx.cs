@@ -133,12 +133,14 @@ namespace VotingPresentationLayer
 
             foreach (VotingCandidate candidate in votingCandidates)
             {
+                string imagePath = @"images/candidates/";
                 if (string.IsNullOrEmpty(candidate.ProfileImage))
                 {
                     candidate.ProfileImage = "unknown.jpg";
+                    imagePath = @"images/";
                 }
 
-                string imageURL = @"images/" + candidate.ProfileImage;
+                string imageURL = imagePath + candidate.ProfileImage;
                 string name = data.GetMemberNameByUFID(candidate.UFID);
                 string profile = string.Format("<center><div  class='profile-image'><img src='{0}' alt='{1}' width='120px' height='150px' /></div><div class='profile-name'>{1}</div><center>", imageURL, name);
 
