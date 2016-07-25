@@ -8,6 +8,7 @@ using System.IO;
 using VotingDataLayer;
 using VotingEntityLayer;
 using VotingExceptionLayer;
+using System.Data;
 
 namespace VotingPresentationLayer
 {
@@ -50,6 +51,20 @@ namespace VotingPresentationLayer
             else
             {
                 return "~/images/unknown.jpg";
+            }
+        }
+
+        protected void aisCandidates_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            try
+            {
+                VotingData data = new VotingData();
+                DataView candidates = data.GetElectionCandidates();
+                HttpContext.Current.Cache.Insert("candidates", candidates, null, DateTime.Now.AddHours(2), System.Web.Caching.Cache.NoSlidingExpiration);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogs.LogErrors(ex.Message);
             }
         }
     }

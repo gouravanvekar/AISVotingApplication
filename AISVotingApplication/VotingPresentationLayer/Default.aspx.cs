@@ -21,10 +21,10 @@ namespace VotingPresentationLayer
             try
             {
                 VotingData votingData = new VotingData();
-                string ufid = votingData.ValidateUFID(username.Text);
+                string ufid = votingData.ValidateUFID(txtUsername.Text);
                 if (!string.IsNullOrEmpty(ufid))
                 {
-                    string pwd = password.Text;
+                    string pwd = txtPassword.Text;
                     if (votingData.ValidateUser(ufid, pwd))
                     {
                         if (ufid.ToLower() == "admin")
@@ -35,25 +35,47 @@ namespace VotingPresentationLayer
                         else
                         {
                             Session["user"] = ufid;
-                            Response.Redirect("VotingHome.aspx");
+                            Response.Redirect("Home.aspx");
                         }
-                        Error.Text = string.Empty;
+                        lblMessage.Text = string.Empty;
                     }
                     else
-                        Error.Text = "Invalid Email or Password";
+                    {
+                        lblMessage.Text = "Invalid Credentials";
+                        lblMessage.CssClass = "alert alert-danger center-block alert-danger-class";
+                    }
                 }
-                else
-                    Error.Text = "Invalid Email Format";
 
             }
             catch (AISException ex)
             {
+                lblMessage.Text = "Invalid Credentials";
+                lblMessage.CssClass = "alert alert-danger center-block alert-danger-class";
                 ErrorLogs.LogErrors(ex.Message);
             }
             catch (Exception ex)
             {
+                lblMessage.Text = "Invalid Credentials";
+                lblMessage.CssClass = "alert alert-danger center-block alert-danger-class";
                 ErrorLogs.LogErrors(ex.Message);
             }
+        }
+
+        protected void requestAccess_Click(object sender, EventArgs e)
+        {
+            lblMessage.Text = "Access requested";
+            lblMessage.CssClass = "alert alert-success center-block alert-success-class";
+            ClearValues();
+        }
+
+        private void ClearValues()
+        {
+            txtUsername.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtFirstname.Text = string.Empty;
+            txtLastname.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtRequestPassword.Text = string.Empty;
         }
     }
 }

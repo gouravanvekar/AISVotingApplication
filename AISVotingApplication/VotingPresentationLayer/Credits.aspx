@@ -1,86 +1,94 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AISMember.Master" AutoEventWireup="true"
-    CodeBehind="Credits.aspx.cs" Inherits="VotingPresentationLayer.Credits" %>
+﻿<%@ Page Title="Credits" Language="C#" MasterPageFile="~/AISVoter.Master" AutoEventWireup="true" CodeBehind="Credits.aspx.cs" Inherits="VotingPresentationLayer.Credits" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-        function hover(element, path) {
-            element.setAttribute('src', path);
-        }
-        function unhover(element, path) {
-            element.setAttribute('src', path);
-        }
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="VoteArea" runat="server">
-    <center>
-        <h1>Credits</h1>
-        <table class="table-style">
-            <tr>
-                <td style="padding: 20px; width: 320px; line-height: 1.5em;">
-                    <div class="profile-avatar" style="text-align: center">
-                        <a href="http://gouravanvekar.com/" target="_blank" class="social">
-                            <img src="images/GA.jpg" alt="GA" />
-                        </a>
+    <div class="page-content">
+        <h4 class="classic-title"><span>Credits</span></h4>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img alt="" src="images/GA.jpg" />
+                        <div class="member-name">Gourav Anvekar <span>Developer</span></div>
                     </div>
-                    <div style="text-align: center">
-                        <b>Gourav Anvekar</b><br />
+                    <div class="member-info">
+                        <p>
+                            <strong>Vice President</strong> <br />
+                            <strong class="accent-color">Media and Communications</strong> <br />
+                            <strong>Fall 2014</strong> <br />
+                        </p>
                     </div>
-                    <div style="text-align: center">
-                        Developer<br />
-                        (VP Media and Communications: Fall 2014)
+                    <div class="member-socail">
+                        <a class="linkedin" href="https://www.linkedin.com/in/gouravanvekar" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a class="github" href="http://github.com/gouravanvekar" target="_blank"><i class="fa fa-github"></i></a>
+                        <a class="gplus" href="https://plus.google.com/+GouravAnvekar" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        <a class="facebook" href="https://www.facebook.com/gaurav.anvekar7" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a class="mail" href="mailto:gourav.anvekar@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+                        <a class="web" href="http://gouravanvekar.com/"><i class="fa fa-globe"></i></a>
                     </div>
-                    <br />
-                    <div style="text-align: center;" class="social">
-                        <a href="https://www.facebook.com/gaurav.anvekar7" target="_blank">
-                            <img src="images/Facebook.png" alt="Facebook" />
-                        </a>
-                        &nbsp;&nbsp;
-                        <a href="http://github.com/gouravanvekar" target="_blank" class="social">
-                            <img src="images/GitHub.png" alt="GitHub" />
-                        </a>
-                        &nbsp;&nbsp;
-                        <a href="https://www.linkedin.com/in/gouravanvekar" target="_blank" class="social">
-                            <img src="images/LinkedIn.png" alt="LinkedIn" />
-                        </a>
-                        &nbsp;&nbsp;
-                        <a href="http://gouravanvekar.com/" target="_blank" class="social">
-                            <img src="images/Website.png" alt="Website" />
-                        </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img alt="" src="images/AA.jpg" />
+                        <div class="member-name">Aron Aperauch <span>AWS Admin / PM</span></div>
                     </div>
-                </td>                
-                <td style="padding: 20px; width: 320px; line-height: 1.5em;">
-                    <div class="profile-avatar" style="text-align: center">
-                        <a href="http://aperauch.appspot.com/" target="_blank" class="social">
-                            <img src="images/AA.jpg" alt="GA" />
-                        </a>
+                    <div class="member-info">
+                        <p>
+                            <strong>Vice President</strong> <br />
+                            <strong class="accent-color">Networking</strong> <br />
+                            <strong>Spring 2013</strong> <br />
+                        </p>
                     </div>
-                    <div style="text-align: center">
-                        <b>Aron Aperauch</b><br />
+                    <div class="member-socail">
+                        <a class="linkedin" href="https://www.linkedin.com/in/aperauch" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a class="github" href="https://github.com/aperauch" target="_blank"><i class="fa fa-github"></i></a>
+                        <a class="gplus" href="https://plus.google.com/+AronAperauch" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        <a class="facebook" href="https://www.facebook.com/aron.aperauch" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a class="mail" href="mailto:aperauch@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+                        <a class="web" href="http://aperauch.appspot.com/"><i class="fa fa-globe"></i></a>
                     </div>
-                    <div style="text-align: center">
-                        Project Manager<br />
-                        (VP Networking: Spring 2013)
+                </div>
+            </div>
+<%--            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img alt="" src="images/face_1.png" />
+                        <div class="member-name">Chris John <span>Developer</span></div>
                     </div>
-                    <br />
-                    <div style="text-align: center;" class="social">
-                        <a href="https://www.facebook.com/aron.aperauch" target="_blank">
-                            <img src="images/Facebook.png" alt="Facebook" />
-                        </a>
-                        &nbsp;&nbsp;
-                        <a href="https://github.com/aperauch" target="_blank" class="social">
-                            <img src="images/GitHub.png" alt="GitHub" />
-                        </a>
-                        &nbsp;&nbsp;
-                        <a href="https://www.linkedin.com/in/aperauch" target="_blank" class="social">
-                            <img src="images/LinkedIn.png" alt="LinkedIn" />
-                        </a>
-                        &nbsp;&nbsp;
-                        <a href="http://aperauch.appspot.com/" target="_blank" class="social">
-                            <img src="images/Website.png" alt="Website" />
-                        </a>
+                    <div class="member-info">
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat.</p>
                     </div>
-                </td>
-            </tr>
-        </table>
-    </center>
+                    <div class="member-socail">
+                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
+                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                        <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
+                        <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img alt="" src="images/face_1.png" />
+                        <div class="member-name">Sara John <span>Developer</span></div>
+                    </div>
+                    <div class="member-info">
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat.</p>
+                    </div>
+                    <div class="member-socail">
+                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="gplus" href="#"><i class="fa fa-google-plus"></i></a>
+                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                        <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
+                        <a class="mail" href="#"><i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>--%>
+        </div>
+        <div class="hr1" style="margin-bottom: 50px;"></div>
+    </div>
 </asp:Content>

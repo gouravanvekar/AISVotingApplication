@@ -60,11 +60,21 @@
     <Content Include="ActivatePoll.aspx" />
     <Content Include="AddCandidate.aspx" />
     <Content Include="AddMember.aspx" />
+    <Content Include="App_Data\AIS_DB_Queries.txt" />
     <Content Include="BreakUpAnalysis.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Credits.aspx" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\brand.css" />
+    <Content Include="css\custom.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\login.css" />
     <Content Include="css\menu.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\slicknav.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\sweetalert.css" />
+    <Content Include="css\vote.min.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DeleteCandidate.aspx" />
@@ -72,10 +82,14 @@
     <Content Include="Feedback.aspx" />
     <Content Include="FindMemberByName.aspx" />
     <Content Include="FindMembers.aspx" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Home.aspx" />
     <Content Include="images\AA.jpg" />
     <Content Include="images\Activate.png" />
     <Content Include="images\AIS.png" />
     <Content Include="images\AISLogo.png" />
+    <Content Include="images\ais_logo.png" />
     <Content Include="images\bg.png" />
     <Content Include="images\BreakUpAnalysis.png" />
     <Content Include="images\Candidate.png" />
@@ -100,21 +114,36 @@
     <Content Include="images\twitter.png" />
     <Content Include="images\ufais_labs-logo.gif" />
     <Content Include="images\UFLogo.png" />
+    <Content Include="images\uf_logo.png" />
     <Content Include="images\unknown.jpg" />
     <Content Include="images\VotingTrends.png" />
     <Content Include="images\Website.png" />
     <Content Include="images\weibo.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="ProjectTeam.aspx" />
     <Content Include="ResetElection.aspx" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\data.js" />
     <Content Include="Scripts\drilldown.js" />
     <Content Include="Scripts\exporting.js" />
     <Content Include="Scripts\gray.js" />
     <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.appear.js" />
+    <Content Include="Scripts\jquery.isotope.min.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\jquery.slicknav.js" />
     <Content Include="Scripts\menu.js" />
+    <Content Include="Scripts\modernizrr.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Scripts\vote.min.js" />
     <Content Include="SetAdminPassword.aspx" />
+    <Content Include="UpdatePassword.aspx" />
     <Content Include="ViewFeedback.aspx" />
     <Content Include="ViewMembers.aspx" />
+    <Content Include="Vote.aspx" />
     <Content Include="Voting.aspx" />
     <Content Include="VotingHome.aspx" />
     <Content Include="VotingResults.aspx" />
@@ -163,6 +192,13 @@
     </Compile>
     <Compile Include="AISMember.Master.designer.cs">
       <DependentUpon>AISMember.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AISVoter.Master.cs">
+      <DependentUpon>AISVoter.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AISVoter.Master.designer.cs">
+      <DependentUpon>AISVoter.Master</DependentUpon>
     </Compile>
     <Compile Include="BreakUpAnalysis.aspx.cs">
       <DependentUpon>BreakUpAnalysis.aspx</DependentUpon>
@@ -234,6 +270,27 @@
     <Compile Include="FindMembers.aspx.designer.cs">
       <DependentUpon>FindMembers.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectTeam.aspx.cs">
+      <DependentUpon>ProjectTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectTeam.aspx.designer.cs">
+      <DependentUpon>ProjectTeam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResetElection.aspx.cs">
       <DependentUpon>ResetElection.aspx</DependentUpon>
@@ -249,6 +306,13 @@
     <Compile Include="SetAdminPassword.aspx.designer.cs">
       <DependentUpon>SetAdminPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePassword.aspx.cs">
+      <DependentUpon>UpdatePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdatePassword.aspx.designer.cs">
+      <DependentUpon>UpdatePassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewFeedback.aspx.cs">
       <DependentUpon>ViewFeedback.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +326,13 @@
     </Compile>
     <Compile Include="ViewMembers.aspx.designer.cs">
       <DependentUpon>ViewMembers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vote.aspx.cs">
+      <DependentUpon>Vote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vote.aspx.designer.cs">
+      <DependentUpon>Vote.aspx</DependentUpon>
     </Compile>
     <Compile Include="Voting.aspx.cs">
       <DependentUpon>Voting.aspx</DependentUpon>
@@ -300,7 +371,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="images\candidates\" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +392,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AISMember.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AISVoter.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\login.min.css" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

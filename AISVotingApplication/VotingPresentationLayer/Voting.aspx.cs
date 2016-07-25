@@ -120,7 +120,7 @@ namespace VotingPresentationLayer
             }
             else
             {
-                inactiveMessage.Text = "Voting has not begun for " + position + "<br />Please wait<br />We appreciate your patience";
+                inactiveMessage.Text = "Voting is inactive for " + position + "<br />Please wait for instructions";
                 activeVoting.Visible = false;
                 inactiveVoting.Visible = true;
             }

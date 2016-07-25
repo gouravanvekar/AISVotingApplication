@@ -1,0 +1,318 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AISVoter.master.cs" Inherits="VotingPresentationLayer.AISVoter" %>
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title><%= Page.Title %> | AIS Elections</title>
+    <!-- CSS  -->
+    <link href="css/vote.min.css" rel="stylesheet" />
+    <%--<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/slicknav.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/brand.css" media="screen" />--%>
+    <link rel="icon" type="image/png" href="images/AIS.png" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+    <div id="container">
+        <form id="form1" runat="server">
+            <asp:ScriptManager ID="VoteScriptManager" runat="server">
+            </asp:ScriptManager>
+            <div class="hidden-header"></div>
+            <header class="clearfix">
+                <div class="top-bar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="contact-details">
+                                    <li>
+                                        <a href="http://www.ufais.com/" target="_blank"><i class="fa fa-globe"></i>&nbsp;www.ufais.com</a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:vp-media@ufais.com"><i class="fa fa-envelope-o"></i>&nbsp;vp-media@ufais.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="social-list">
+                                    <li>
+                                        <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="http://facebook.ufais.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/aisuf" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="tumblr itl-tooltip" data-placement="bottom" title="Linkedin" href="http://linkedin.ufais.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="google itl-tooltip" data-placement="bottom" title="YouTube" href="http://www.youtube.com/UFAISmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="dribbble itl-tooltip" data-placement="bottom" title="Weibo" href="http://weibo.com/u/3728708845" target="_blank"><i class="fa fa-weibo"></i></a>
+                                    </li>
+                                </ul>
+                                <!-- End Social Links -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar navbar-default navbar-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <!-- Stat Toggle Nav Link For Mobiles -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <!-- End Toggle Nav Link For Mobiles -->
+                            <a class="navbar-brand" href="Home.aspx">
+                                <img alt="" src="images/ais_logo.png" />
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <!-- Start Navigation List -->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="Home.aspx">Home</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="#">Vote</a>
+                                    <ul class="dropdown">
+                                        <li><a href="Vote.aspx?Position=President">President</a></li>
+                                        <li><a href="Vote.aspx?Position=Corporate Relations">Corporate Relations</a></li>
+                                        <li><a href="Vote.aspx?Position=Leadership Development">Leadership Development</a></li>
+                                        <li><a href="Vote.aspx?Position=Membership & Treasury">Membership & Treasury</a></li>
+                                        <li><a href="Vote.aspx?Position=Networking">Networking</a></li>
+                                        <li><a href="Vote.aspx?Position=Media & Communication">Media & Communication</a></li>
+                                        <li><a href="Vote.aspx?Position=Alumni Relations">Alumni Relations</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="ChangePassword.aspx">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="Credits.aspx">Credits</a>
+                                </li>
+                                <li>
+                                    <a href="Default.aspx">Logout</a>
+                                </li>
+                            </ul>
+                            <!-- End Navigation List -->
+                        </div>
+                    </div>
+                    <!-- Mobile Menu Start -->
+                    <ul class="wpb-mobile-menu">
+                        <li>
+                            <a href="Home.aspx">Home</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">Vote</a>
+                            <ul class="dropdown">
+                                <li><a href="Vote.aspx?Position=President">President</a></li>
+                                <li><a href="Vote.aspx?Position=Corporate Relations">Corporate Relations</a></li>
+                                <li><a href="Vote.aspx?Position=Leadership Development">Leadership Development</a></li>
+                                <li><a href="Vote.aspx?Position=Membership & Treasury">Membership & Treasury</a></li>
+                                <li><a href="Vote.aspx?Position=Networking">Networking</a></li>
+                                <li><a href="Vote.aspx?Position=Media & Communication">Media & Communication</a></li>
+                                <li><a href="Vote.aspx?Position=Alumni Relations">Alumni Relations</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="ChangePassword.aspx">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="Credits.aspx">Credits</a>
+                        </li>
+                        <li>
+                            <a href="Default.aspx">Logout</a>
+                        </li>
+                    </ul>
+                    <!-- Mobile Menu End -->
+                </div>
+            </header>
+            <div class="page-banner" style="padding: 40px 0; background: #e2e2e2;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2>AIS Elections</h2>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="breadcrumbs">
+                                <li><a href="ChangePassword.aspx">
+                                    <asp:Label ID="UserName" runat="server"></asp:Label></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="VoteArea" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <footer>
+                <div class="container">
+                    <div class="row footer-widgets">
+                        <div class="col-md-3">
+                            <div class="footer-widget mail-subscribe-widget">
+                                <h4>Rating<span class="head-line"></span></h4>
+                                <p>Help us improve your experience by rating the app!</p>
+                                <div class="hr1" style="margin-bottom: 10px;"></div>
+                                <asp:UpdatePanel ID="upRating" runat="server">
+                                    <ContentTemplate>
+                                        <div class="row">
+                                            <div class="col-xs-4 pull-left">
+                                                <h4>Rate the app</h4>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <asp:RadioButtonList ID="rblRating" runat="server" RepeatLayout="flow" RepeatDirection="Horizontal" CssClass="btn-group pull-right" data-toggle="buttons">
+                                                    <asp:ListItem class="btn btn-default" Value="1">1</asp:ListItem>
+                                                    <asp:ListItem class="btn btn-default" Value="2">2</asp:ListItem>
+                                                    <asp:ListItem class="btn btn-default" Value="3">3</asp:ListItem>
+                                                    <asp:ListItem class="btn btn-default" Value="4">4</asp:ListItem>
+                                                    <asp:ListItem class="btn btn-default" Value="5">5</asp:ListItem>
+                                                </asp:RadioButtonList>
+                                            </div>
+                                        </div>
+                                        <asp:TextBox ID="txtComments" runat="server" placeholder="Comment" CssClass="email" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                                        <asp:Button ID="save_feedback" runat="server" Text="Submit" class="btn-system btn-block" OnClick="save_feedback_Click" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="save_feedback" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="footer-widget twitter-widget">
+                                <h4>Get in touch<span class="head-line"></span></h4>
+                                <h4>President&nbsp;&nbsp;&nbsp;<a href="mailto:president@ufais.com" style="text-transform: lowercase;">president@ufais.com</a></h4>
+                                <p>
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>
+                                                <p>
+                                                    VP Corporate Relations<br />
+                                                    <a href="mailto:vp-corporate@ufais.com">vp-corporate@ufais.com</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    VP Treasury & Membership<br />
+                                                    <a href="mailto:vp-treasury@ufais.com">vp-treasury@ufais.com</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    VP Media & Communications<br />
+                                                    <a href="mailto:vp-media@ufais.com">vp-media@ufais.com</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>
+                                                <p>
+                                                    VP Leadership Development<br />
+                                                    <a href="mailto:vp-leadership@ufais.com">vp-leadership@ufais.com</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    VP Networking<br />
+                                                    <a href="mailto:vp-networking@ufais.com">vp-networking@ufais.com</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    VP Alumni Relations<br />
+                                                    <a href="mailto:vp-alumni@ufais.com">vp-alumni@ufais.com</a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="footer-widget social-widget">
+                                <h4>Follow Us<span class="head-line"></span></h4>
+                                <ul class="social-icons">
+                                    <li>
+                                        <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="http://facebook.ufais.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="https://twitter.com/aisuf" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="tumblr itl-tooltip" data-placement="bottom" title="Linkedin" href="http://linkedin.ufais.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="google itl-tooltip" data-placement="bottom" title="YouTube" href="http://www.youtube.com/UFAISmedia" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="dribbble itl-tooltip" data-placement="bottom" title="Weibo" href="http://weibo.com/u/3728708845" target="_blank"><i class="fa fa-weibo"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="footer-widget social-widget">
+                                <h4>Visit Us<span class="head-line"></span></h4>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <a href="http://www.ufais.com/" target="_blank"><i class="fa fa-globe"></i>&nbsp;www.ufais.com</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="footer-widget contact-widget">
+                                <h4>
+                                    <img src="images/uf_logo.png" class="img-responsive" alt="UF Logo" /></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copyright-section">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>&copy; UFAIS | All Rights Reserved</p>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="footer-nav">
+                                    <li><a href="VotingHome.aspx">Legacy</a></li>
+                                    <li><a href="http://www.ufais.com/about-us/executive-board/" target="_blank">Executive Board</a></li>
+                                    <li><a href="http://www.ufais.com/" target="_blank">UFAIS</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </form>
+    </div>
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+    <!-- JS -->
+    <script src="Scripts/vote.min.js"></script>
+    <%--<script type="text/javascript" src="Scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="Scripts/modernizrr.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.appear.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.slicknav.js"></script>
+    <script type="text/javascript" src="Scripts/sweetalert.min.js"></script>
+    <script type="text/javascript" src="Scripts/script.js"></script>--%>
+</body>
+</html>

@@ -29,7 +29,7 @@
                         </div>
                         <div>
                             <br />
-                            <a href="Default.aspx" style="text-decoration: none; color: Black;">Sign out</a>
+                            <a href="Default.aspx" style="text-decoration: none; color: Black;">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -52,12 +52,13 @@
                         <li><a href="#" class="parent"><span>Profile</span></a>
                             <div>
                                 <ul>
-                                    <li><a href="Elected.aspx"><span>Elected Candidates</span></a></li>
-                                    <li><a href="ChangePassword.aspx"><span>Change Password</span></a></li>
+                                    <%--<li><a href="Elected.aspx"><span>Elected Candidates</span></a></li>--%>
+                                    <li><a href="UpdatePassword.aspx"><span>Change Password</span></a></li>
+                                    <li><a href="Home.aspx"><span>Switch Interface</span></a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="last"><a href="Credits.aspx"><span>Credits</span></a></li>
+                        <li class="last"><a href="ProjectTeam.aspx"><span>Credits</span></a></li>
                     </ul>
                 </div>
                 <div class="page-body">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -57,6 +58,8 @@ namespace VotingPresentationLayer
                     if (data.AddVotingCandidate(candidate))
                     {
                         Error.Text = "Candidate added successfully";
+                        DataView candidates = data.GetElectionCandidates();
+                        HttpContext.Current.Cache.Insert("candidates", candidates, null, DateTime.Now.AddHours(2), System.Web.Caching.Cache.NoSlidingExpiration);
                     }
                     else
                     {

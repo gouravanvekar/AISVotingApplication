@@ -12,7 +12,7 @@
                 <asp:GridView ID="aisCandidates" runat="server" CellPadding="4" EnableModelValidation="True"
                     ForeColor="#333333" GridLines="None" Style="border: 1px solid black;" Width="600px"
                     AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="UFID"
-                    DataSourceID="CandidatesDataSource" OnRowDeleting="aisCandidates_RowDeleting">
+                    DataSourceID="CandidatesDataSource" OnRowDeleting="aisCandidates_RowDeleting" OnRowDeleted="aisCandidates_RowDeleted">
                     <AlternatingRowStyle BackColor="White" HorizontalAlign="Center" />
                     <Columns>
                         <asp:BoundField DataField="UFID" HeaderText="UFID" ReadOnly="True" SortExpression="UFID" Visible="false" />

@@ -683,6 +683,43 @@ namespace VotingDataLayer
         }
 
         /// <summary>
+        /// Method to retrive voting candidates in a DataView format
+        /// </summary>
+        /// <param name="position">Voting position</param>
+        /// <returns>DataView of candidates for the specified position</returns>
+        public DataView GetElectionCandidates()
+        {
+            DataSet ds;
+            DataView candidates;
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT A.UFID, COALESCE(A.First_Name, '') + ' ' + COALESCE(A.Last_Name, '') AS 'Name', COALESCE(V.Profile_Image, '') AS 'ProfileImage', V.Position FROM AIS_Members A, Voting_Candidate V WHERE A.UFID = V.UFID";
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cmd;
+                ds = new DataSet();
+                da.Fill(ds);
+                candidates = new DataView(ds.Tables[0]);
+                con.Close();
+            }
+            catch (AISException ex)
+            {
+                throw new AISException("Error while retriving candidates", ex);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return candidates;
+        }
+
+        /// <summary>
         /// Method to retrive elected candidates by the logged in user
         /// </summary>
         /// <param name="position">User's UFID</param>

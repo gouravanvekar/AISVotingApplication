@@ -9,7 +9,7 @@ using VotingExceptionLayer;
 
 namespace VotingPresentationLayer
 {
-    public partial class ChangePassword : System.Web.UI.Page
+    public partial class UpdatePassword : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,19 +26,16 @@ namespace VotingPresentationLayer
                 if (CurrentPassword.Text == data.GetPassword(ufid))
                 {
                     data.SetNewPassword(ufid, NewPassword.Text);
-                    lblMessage.Text = "Password changed successfully";
-                    lblMessage.CssClass = "alert alert-success center-block alert-success-class";
+                    Error.Text = "Password changed successfully";
                 }
                 else
                 {
-                    lblMessage.Text = "Invalid Password Entered";
-                    lblMessage.CssClass = "alert alert-danger center-block alert-danger-class";
+                    Error.Text = "Invalid Password Entered";
                 }
             }
             catch (Exception ex)
             {
-                lblMessage.Text = "Error while changing Password";
-                lblMessage.CssClass = "alert alert-danger center-block alert-danger-class";
+                Error.Text = "Error while changing Password";
                 ErrorLogs.LogErrors(ex.Message);
             }
         }
