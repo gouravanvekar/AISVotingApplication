@@ -83,7 +83,7 @@
                                     <a href="Home.aspx">Home</a>
                                 </li>
                                 <li>
-                                    <a class="active" href="#">Vote</a>
+                                    <a href="#">Vote</a>
                                     <ul class="dropdown">
                                         <li><a href="Vote.aspx?Position=President">President</a></li>
                                         <li><a href="Vote.aspx?Position=Corporate Relations">Corporate Relations</a></li>

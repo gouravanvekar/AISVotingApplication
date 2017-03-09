@@ -64,11 +64,12 @@
     border-top: 1px solid rgba(0,0,0,0.04);
   }
   .slicknav_nav .slicknav_arrow {
-     background: #ededed;
+    background: #ededed;
     float: right;
     text-align: center;
     width: 35px;
     color: #666;
+    margin-right: 75px;
   }
   .slicknav_nav .slicknav_item {
     cursor: pointer; }
@@ -101,7 +102,7 @@
 .slicknav_btn {
   border: 1px solid;
   border-radius: 0;
-  margin: 16px 15px;
+  margin: 16px 95px;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
